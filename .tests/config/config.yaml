@@ -1,0 +1,2 @@
+workdir: .tests/
+samples: config/samples.tsv
