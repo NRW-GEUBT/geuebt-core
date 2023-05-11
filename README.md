@@ -1,12 +1,10 @@
 
 # A Snakekemake repository template
 
+## Usage
 
-TBD
+Copy the content of the repository to an empty directory and link your upstream 
+repository. Commit and push to origin.
 
-
-## Usage 
-
-The documentation for this workflow is hosted on our [homepage](<INSERT URL>).
 
 

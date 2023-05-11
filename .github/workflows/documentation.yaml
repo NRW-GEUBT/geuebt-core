@@ -2,8 +2,7 @@ name: Deploy Documentation
 
 on:
   push:
-    branches:
-      - master
+    branches: [master, main]
     paths:
       - "**.md"
       - "docs/**"
@@ -13,20 +12,21 @@ on:
   release:
     types: # This configuration does not affect the page_build event above
       - created
-
+permissions:
+  contents: write
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: SetUp Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
           python-version: 3.x
 
-      # - name: Update Contributing
-        # run: cat CONTRIBUTING.md > docs/dev-guide/contributing.md
+      - name: Update Contributing
+        run: cat CONTRIBUTING.md > docs/contributing.md
 
       - name: Update Changelog
         run: cat CHANGELOG.md > docs/about/changelog.md
@@ -35,6 +35,17 @@ jobs:
         run: cat LICENSE > docs/about/license.md
 
       - name: Install Dependencies
+        run: pip install mkdocs-material
+
+      - name: Cache
+        uses: actions/cache@v3
+        with:
+          key: mkdocs-material-${{ github.ref }} 
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+
+      - name: Install deps
         run: pip install mkdocs-material
 
       - name: Publish Docs

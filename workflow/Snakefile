@@ -11,7 +11,7 @@ min_version("6.3.0")
 shell.executable("bash")
 
 
-configfile: os.path.join(workflow.basedir, "..", ".tests", "config", "config.yaml")
+configfile: os.path.join(workflow.basedir, "..", ".tests", "integration", "config", "config.yaml")
 
 
 # Validating samples in rules/common
@@ -28,17 +28,21 @@ include: "rules/common.smk"
 
 rule all:
     input:
-        
+        "",
 
 
 # Includes --------------------------------------------------------------------
 
 
+include: ""
+
+
 # Workflow --------------------------------------------------------------------
+## send notifications with onsuccess and onerror
 
 
 onstart:
-    print(f"\nYou are using <WORKFLOWNAME> version: {version}")
+    print(f"\nYou are using <REPO NAME> version: {version}")
     with open(pipe_log, "a") as f:
         f.write(f"[{get_local_time()}]: Pipeline started\n")
 
@@ -62,7 +66,7 @@ onerror:
     print(
         f"\nAn error occured, please consider filing an bug report."
         f"\n"
-        f"\nIssue tracker: https://github.com/<REPO URL>/issues"
+        f"\nIssue tracker: <ISSUE LINK>"
     )
     with open(pipe_log, "a") as f:
         f.write(f"[{get_local_time()}]: Pipeline stopped on error\n")

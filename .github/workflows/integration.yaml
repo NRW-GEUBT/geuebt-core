@@ -2,34 +2,45 @@ name: CI
 
 on:
   push:
-    branches: 
-      - master
+    branches: [master, main]
   pull_request:
-    branches: [ master ]
+    branches: [master, main]
   workflow_dispatch:
 
 jobs:
-  Testing:
+  Unit_testing:
     runs-on: ubuntu-latest
     steps:
     
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     
-    - name: Test workflow
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest
+        if [ -f .tests/unit/requirements.txt ]; then pip install -r .tests/unit/requirements.txt; fi
+    
+    - name: Unit testing
+      run: |
+        pytest .tests/unit
+    
+    - name: Cancelling parallel jobs
+      if: failure()
+      uses: andymckay/cancel-action@0.3
+
+  Integration_testing:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Integration testing
       uses: snakemake/snakemake-github-action@v1.24.0
       with:
-        directory: '.tests'
+        directory: '.tests/integration'
         snakefile: 'workflow/Snakefile'
-        args: "-j 1 --use-conda --conda-cleanup-pkgs cache --conda-prefix envs --show-failed-logs --configfile .tests/config/config.yaml"
+        args: "--cores 1 --use-conda --conda-cleanup-pkgs cache --conda-prefix envs --show-failed-logs --configfile .tests/integration/config/config.yaml"
         stagein: |
             conda config --set channel_priority strict
-    
-    - name: Archive logs on fail
-      if: ${{ failure() }}
-      uses: actions/upload-artifact@v2
-      with:
-        name: foodme-fail-asv
-        path: .tests/logs/
-        if-no-files-found: error
-        retention-days: 3
