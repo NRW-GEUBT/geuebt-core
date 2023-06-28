@@ -100,6 +100,8 @@ checkpoint create_sample_sheets:
         isolate_sheets="validation/staging/isolates_datasheet.json",
     output:
         dirout=directory("sample_sheets"),
+    params:
+        fasta_prefix="validation/staging/fastas",
     conda:
         "../envs/pandas.yaml"
     message:
