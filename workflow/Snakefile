@@ -28,13 +28,22 @@ include: "rules/common.smk"
 
 rule all:
     input:
-        "",
+        "validation/staging/validation_status.json",
+        "validation/staging/isolates_datasheet.json",
 
 
 # Includes --------------------------------------------------------------------
 
 
-include: ""
+# Plan:
+# Gather files and list in manifest
+# Validate
+# dispatch to chewies
+# merge qc status isolate sheets etc.
+# stage to DB
+# Prep reports for clients
+
+include: "rules/gather_and_validate.smk"
 
 
 # Workflow --------------------------------------------------------------------
