@@ -25,17 +25,21 @@ def main(isolate_sheets, dirout, fasta_prefix):
         samples = json.load(fi)
     for sample in samples:
         if not sample["organism"] in ssheets:
-            ssheets[organism] = pd.DataFrame(columns=["sample","path"])
+            organism = sample["organism"]
+            ssheets[organism] = pd.DataFrame(columns=["sample","assembly"])
         fasta_path = os.path.abspath(
-            os.path.join(fasta_prefix, sample["fasta_name"]
+            os.path.join(fasta_prefix, sample["fasta_name"])
         )
-        ssheets[organism] = ssheets[organism].append(
-            {"sample": sample['isolate_id'], "path": fasta_path},
-            ignore_index=True,
-            inplace=True
+        ssheets[organism] = pd.concat(
+            [
+                ssheets[organism],
+                pd.DataFrame({"sample": [sample['isolate_id']], "assembly": [fasta_path]})
+            ], 
+            ignore_index=True
         )
     for k, v in ssheets.items():
-        v.to_csv(os.path.join(dirout, k), sep="\t", index=False)
+        filename = k.replace(" ", "_").replace(".", "") + ".tsv"
+        v.to_csv(os.path.join(dirout, filename), sep="\t", index=False)
 
 
 if __name__ == '__main__':

@@ -58,9 +58,10 @@ checkpoint validate_input:
     # so workaround by getting the module form github via env post-deploy script
     # and just calling snakemake
     # Outputs can be gathered with an aggregation function using the checkpoint
+    # Inputs need absolute paths!
     input:
-        fastaflag=f"{os.getcwd()}/inputs/fasta_flag",
-        metadata=f"{os.getcwd()}/inputs/metadata.tsv",
+        fastaflag="inputs/fasta_flag",
+        metadata="inputs/metadata.tsv",
     output:
         workdir=directory("validation/"),
         isolate_sheets=directory("validation/staging/isolates_sheets"),
@@ -68,10 +69,12 @@ checkpoint validate_input:
         qc_status="validation/staging/validation_status.json",
         merged_isolate_sheet="validation/staging/isolates_datasheet.json",
     params:
-        fastadir=f"{os.getcwd()}/inputs/fastas",
         max_threads_per_job=config["max_threads_per_job"],
         geva_path=f"{config['geuebt-validate_path']}/workflow/Snakefile",
         conda_prefix={workflow.conda_prefix},
+        # Absolute paths needed for workflow
+        fastadir=f"{os.getcwd()}/inputs/fastas",
+        metadata=f"{os.getcwd()}/inputs/metadata.tsv",
     message:
         "[Gather and validate] Validating user input"
     conda:
@@ -88,7 +91,7 @@ checkpoint validate_input:
             --conda-prefix {params.conda_prefix} \
             --cores {threads} \
             --config workdir={output.workdir} \
-                     metadata={input.metadata} \
+                     metadata={params.metadata} \
                      fasta_dir={params.fastadir} \
                      max_threads_per_job={params.max_threads_per_job} \
                      min_contig_length=500
@@ -99,6 +102,7 @@ checkpoint create_sample_sheets:
     input:
         isolate_sheets="validation/staging/isolates_datasheet.json",
     output:
+        # files are named "Genus_species.tsv", points are striped
         dirout=directory("sample_sheets"),
     params:
         fasta_prefix="validation/staging/fastas",
@@ -109,4 +113,4 @@ checkpoint create_sample_sheets:
     log:
         "logs/create_sample_sheets.log"
     script:
-        "../scripts/create_sample_sheets.py"
+        "../scripts/create_sample_sheet.py"

@@ -1,20 +1,40 @@
 #!/usr/bin/env bash
 set -Eeu
 
+
+deploy () {
+  # if already exists, wipe it clean and redo clone
+  [ -d "$local_dir" ] && rm -rf "$local_dir"
+
+  # clone and checkout repo
+  echo "Cloning repo and checking out stable tag"
+  git clone -q "$repo" "$local_dir"
+  cd "$local_dir"
+  git checkout "$tag"
+}
+
+
+## Geubt Validate
 # Repo URL
-validate_repo="https://github.com/NRW-GEUBT/geuebt-validate"
+repo="https://github.com/NRW-GEUBT/geuebt-validate"
 
 # Commit hash to use
-validate_tag="0.1.1"
+tag="0.1.3"
 
 # Local directory to save the Repo
 local_dir="$HOME/.nrw-geuebt/geuebt-validate/"
 
-# if already exists, wipe it clean and redo clone
-[ -d "$local_dir" ] && rm -rf "$local_dir"
+echo "Deploying Geuebt-validate" && deploy
 
-# clone and checkout repo
-echo "Cloning Validate and checking out stable tag"
-git clone -q "$validate_repo" "$local_dir"
-cd "$local_dir"
-git checkout "$validate_tag"
+
+## Geubt Chewie
+# Repo URL
+repo="https://github.com/NRW-GEUBT/geuebt-chewie"
+
+# Commit hash to use
+tag="0.1.4"
+
+# Local directory to save the Repo
+local_dir="$HOME/.nrw-geuebt/geuebt-chewie/"
+
+echo "Deploying Geuebt-chewie" && deploy

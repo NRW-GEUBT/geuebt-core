@@ -1,0 +1,5 @@
+name: mongod
+channels:
+  - conda-forge
+dependencies:
+  - pymongo=4.4.0
