@@ -5,11 +5,15 @@ HOST = 'localhost'
 PORT = 27017
 
 
-client = MongoClient(HOST, PORT)
-db = client.testing_db
-isolates_coll = db.isolates
-clusters_coll = db.clusters
+def main(host, port):
+    client = MongoClient(host, port)
+    db = client.testing_db
+    isolates_coll = db.isolates
+    clusters_coll = db.clusters
+
+    isolates_coll.drop()
+    clusters_coll.drop()
 
 
-isolates_coll.drop()
-clusters_coll.drop()
+if __name__ == '__main__':
+    main(HOST, PORT)
