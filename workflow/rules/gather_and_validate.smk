@@ -52,12 +52,11 @@ rule gather_fastas:
         "../scripts/gather_fastas.py"
 
 
-checkpoint validate_input:
+rule validate_input:
     # Uses the geuebt validate workflow
     # afaik not possible to define module inputs, or too messy
     # so workaround by getting the module form github via env post-deploy script
     # and just calling snakemake
-    # Outputs can be gathered with an aggregation function using the checkpoint
     # Inputs need absolute paths!
     input:
         fastaflag="inputs/fasta_flag",
