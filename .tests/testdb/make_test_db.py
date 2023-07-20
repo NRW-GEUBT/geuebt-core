@@ -7,6 +7,7 @@ from pymongo import MongoClient
 
 HOST = 'localhost'
 PORT = 27017
+DATABASE = 'geuebt-test'
 ISOLATES = os.path.join(
     os.path.dirname(os.path.realpath(__file__)),
     "data/isolate_sheets")
@@ -29,10 +30,10 @@ def paths_to_json(pathlist):
     return  [clean_load(filepath) for filepath in pathlist]
 
 
-def main(host, port, isolate_path, cluster_path):
+def main(host, port, database, isolate_path, cluster_path):
     # Set up collections
     client = MongoClient(host, port)
-    db = client.testing_db
+    db = client[database]
     isolates_coll = db.isolates
     clusters_coll = db.clusters
 
@@ -42,4 +43,4 @@ def main(host, port, isolate_path, cluster_path):
 
 
 if __name__ == '__main__':
-    main(HOST, PORT, ISOLATES, CLUSTERS)
+    main(HOST, PORT, DATABASE, ISOLATES, CLUSTERS)

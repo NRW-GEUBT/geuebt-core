@@ -17,6 +17,11 @@ geuebt-chewie_path: ~/.nrw-geuebt/geuebt-chewie
 # Should watched dirs be emptied?
 cleanup_watched_dirs: False
 
+# Mongo Databse address
+mongodb_host: 'localhost'
+mongodb_port: 27017
+mongodb_database: 'geuebt-test'
+
 # Species-specific args:
 # Add more species as see fit. Naming is taken from the allowed organism names (see Validate module)
 # spaces are replaced by an underscore and points are striped: "Campylobacter spp." becomes "Campylobacter_spp"

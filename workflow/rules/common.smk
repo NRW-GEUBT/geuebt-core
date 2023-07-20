@@ -8,7 +8,7 @@ version = open(os.path.join(workflow.basedir, "..", "VERSION"), "r").read()
 pipe_log = os.path.join(os.getcwd(), "PIPELINE_STATUS")
 
 
-# Validating config ----------------------------------
+# Validating config and inputs -----------------------
 validate(config, schema="../schema/config.schema.yaml")
 
 

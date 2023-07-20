@@ -32,7 +32,7 @@ echo "Deploying Geuebt-validate" && deploy
 repo="https://github.com/NRW-GEUBT/geuebt-chewie"
 
 # Commit hash to use
-tag="0.1.4"
+tag="0.2.0"
 
 # Local directory to save the Repo
 local_dir="$HOME/.nrw-geuebt/geuebt-chewie/"

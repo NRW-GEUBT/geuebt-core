@@ -1,6 +1,7 @@
 {
     "cluster_id": "LIS-3",
     "cluster_number": 3,
+    "organism": "Listeria monocytogenes",
     "size": 2,
     "representative": "2016-0000876",
     "AD_threshold": 10,
