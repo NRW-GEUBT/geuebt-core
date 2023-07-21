@@ -29,7 +29,7 @@ rule merge_metadata:
     conda:
         "../envs/pandas.yaml"
     log:
-        "logs/merge_metadata.log"
+        "logs/merge_metadata.log",
     script:
         "../scripts/merge_metadata.py"
 
@@ -78,8 +78,7 @@ rule validate_input:
         "[Gather and validate] Validating user input"
     conda:
         "../envs/git_workflow.yaml"
-    threads: 
-        workflow.cores
+    threads: workflow.cores
     log:
         "logs/validate_input.log",
     shell:
@@ -110,6 +109,6 @@ checkpoint create_sample_sheets:
     message:
         "[Gather and validate] Creating species-wise sample sheets"
     log:
-        "logs/create_sample_sheets.log"
+        "logs/create_sample_sheets.log",
     script:
         "../scripts/create_sample_sheet.py"

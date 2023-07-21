@@ -10,9 +10,9 @@ rule mongo_pull_clusters:
         statistics="db_data/{species}/statistics.tsv",
     params:
         organism=lambda w: w.species,
-        host=config['mongodb_host'],
-        port=config['mongodb_port'],
-        database=config['mongodb_database'],
+        host=config["mongodb_host"],
+        port=config["mongodb_port"],
+        database=config["mongodb_database"],
         cgmlst_scheme=lambda w: config[w.species]["cgmlst_scheme"],
     conda:
         "../envs/mongodb.yaml"
@@ -66,9 +66,9 @@ rule mongo_push_clusters:
     output:
         flag=touch("dbops/push_clusters.flag"),
     params:
-        host=config['mongodb_host'],
-        port=config['mongodb_port'],
-        database=config['mongodb_database'],
+        host=config["mongodb_host"],
+        port=config["mongodb_port"],
+        database=config["mongodb_database"],
     conda:
         "../envs/mongodb.yaml"
     log:
@@ -83,9 +83,9 @@ rule mongo_push_isolate:
     output:
         flag=touch("dbops/push_isolates.flag"),
     params:
-        host=config['mongodb_host'],
-        port=config['mongodb_port'],
-        database=config['mongodb_database'],
+        host=config["mongodb_host'],
+        port=config["mongodb_port'],
+        database=config["mongodb_database"],
     conda:
         "../envs/mongodb.yaml"
     log:

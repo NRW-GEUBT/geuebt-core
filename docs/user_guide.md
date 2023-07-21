@@ -25,7 +25,7 @@ mamba create -n snakemake snakemake
 
 ### MongoDB
 
-Install the correct MongoDB distribution for your system by following the 
+Install the correct MongoDB distribution for your system by following the
 [installation guide](https://www.mongodb.com/docs/manual/installation/#mongodb-installation-tutorials)
 
 Check the documentaiton for database optimization, management, and security.
@@ -76,8 +76,8 @@ Following arguments must be provided for each run:
 
 ### Organism specific parameters
 
-Organism specific parameters must be provided as a dictionnary whose name is the 
-organism name as provided in the metadata with spaces replaced by underscore and trailing 
+Organism specific parameters must be provided as a dictionnary whose name is the
+organism name as provided in the metadata with spaces replaced by underscore and trailing
 dot stripped (e.g. `Campylobacter spp.` becomes `Campylobacter_spp`)
 
 Following named parameters are required:

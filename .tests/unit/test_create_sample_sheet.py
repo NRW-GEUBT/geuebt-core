@@ -4,7 +4,6 @@ import sys
 from tempfile import TemporaryDirectory
 import shutil
 from pathlib import Path, PurePosixPath
-from json import load
 
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -21,7 +20,7 @@ def test_create_sample_sheet():
         # Copy data to the temporary workdir.
         shutil.copytree(data_path, workdir)
         shutil.copy(script_path, workdir)
-        
+
         # run function
         sys.path.insert(0, workdir)
         from create_sample_sheet import main

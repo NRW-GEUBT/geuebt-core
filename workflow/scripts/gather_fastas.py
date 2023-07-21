@@ -26,7 +26,7 @@ def main(manifest, cleanup, fastadir):
         jdict = json.load(fi)
     for entry in jdict["fasta"]:
         func(
-            entry["path"], 
+            entry["path"],
             os.path.join(fastadir, os.path.basename(entry["path"]))
         )
 

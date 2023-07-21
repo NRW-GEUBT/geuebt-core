@@ -1,7 +1,7 @@
 # Split sample by species and perform allele calling and clustering speices-wise
-# Samrt way would be to check which species are there and only run these 
+# Samrt way would be to check which species are there and only run these
 # rules that need to be run
-# HINT: make a template rule wrapping chewie module then make subroules with 
+# HINT: make a template rule wrapping chewie module then make subroules with
 # parameters adapted to each species. Read in the different species with a function
 # and run only the nescessary rules. At the end aggregate everything to staging
 
@@ -41,8 +41,7 @@ rule chewie:
         "[Call and cluster] Allele calling and clustering for {wildcards.species}"
     conda:
         "../envs/git_workflow.yaml"
-    threads:
-        workflow.cores
+    threads: workflow.cores
     log:
         "logs/call_and_cluster_{species}.log",
     shell:
@@ -90,7 +89,7 @@ rule merge_qcstatus:
 checkpoint move_and_split_chewie_results:
     input:
         isolate_sheets=lambda w: aggregate_over_species_from_chewie(w)["isolate_sheets"],
-        clusters=lambda w:aggregate_over_species_from_chewie(w)["clusters"],
+        clusters=lambda w: aggregate_over_species_from_chewie(w)["clusters"],
     output:
         # move clusters to root staging directly since they won't be processed further
         isolates=directory("call_and_cluster/staging/isolates_sheets"),

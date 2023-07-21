@@ -21,7 +21,7 @@ def test_make_isolate_sheet():
         # Copy data to the temporary workdir.
         shutil.copytree(data_path, workdir)
         shutil.copy(script_path, workdir)
-        
+
         # run function
         sys.path.insert(0, workdir)
         from make_isolate_sheet import main

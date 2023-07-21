@@ -20,7 +20,7 @@ def main(manifest, metadata_path):
     with open(manifest, "r") as fi:
         manifest_dict = json.load(fi)
     dfs = [
-        pd.read_csv(entry["path"], sep="\t") 
+        pd.read_csv(entry["path"], sep="\t")
         for entry in manifest_dict["metadata"]
     ]
     merged = pd.concat(dfs, axis=0)

@@ -1,6 +1,5 @@
 import os
 import pathlib
-import glob
 import json
 from pymongo import MongoClient
 
@@ -27,7 +26,7 @@ def clean_load(filepath):
 
 
 def paths_to_json(pathlist):
-    return  [clean_load(filepath) for filepath in pathlist]
+    return [clean_load(filepath) for filepath in pathlist]
 
 
 def main(host, port, database, isolate_path, cluster_path):

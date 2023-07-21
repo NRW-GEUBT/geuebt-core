@@ -42,8 +42,10 @@ def main(
     # Getting clusters populations
     cluster_coll = db["clusters"]
     main, sub = [], []
-    for clus in cluster_coll.find({"organism": species},
-        comment="Automated <find> of cluster sheets from Geuebt-Core"):
+    for clus in cluster_coll.find({
+        "organism": species},
+        comment="Automated <find> of cluster sheets from Geuebt-Core"
+    ):
         # Oprhans are skipped
         if clus["cluster_number"] > 0:
             main.append({"sample": clus["representative"], "cluster_name": clus["cluster_id"]})
@@ -53,8 +55,10 @@ def main(
     # Getting sample info
     isolates_coll = db["isolates"]
     profiles, timestamps, statistics = [], [], []
-    for sample in isolates_coll.find({"organism": species}, 
-        comment="Automated <find> of cluster sheets from Geuebt-Core"):
+    for sample in isolates_coll.find(
+        {"organism": species},
+        comment="Automated <find> of cluster sheets from Geuebt-Core"
+    ):
         timestamps.append({"sample": sample["isolate_id"], "date": sample["epidata"]["collection_date"]})
         statistics.append({"sample": sample["isolate_id"], **sample["cgmlst"]["allele_stats"]})
         massaged_profiles = {entry["locus"]: entry["allele_crc32"] for entry in sample["cgmlst"]["allele_profile"]}
@@ -74,10 +78,10 @@ def main(
             d = header
     # For the profile, need to read in the file names from scheme
     if not profiles:
-        fasta_names = list(pathlib.Path(scheme).glob('*.fasta'))
+        fastanames = list(pathlib.Path(scheme).glob('*.fasta'))
         profiles = {"#FILE": ""}
         profiles.update({filename: "" for filename in fastanames})
-    
+
     # Dump everything in tables
     for d, path in zip(
         [main, sub, timestamps, statistics, profiles],

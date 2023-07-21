@@ -32,19 +32,19 @@ def find_files(folder, exts):
 
 def main(watched_folders, manifest_path, fasta_ext=FASTA_EXT, table_ext=TABLE_EXT):
     # In each watched folder look for fasta files
-    filelist=[]
+    filelist = []
     for fd in watched_folders:
         filelist.extend(find_files(fd, fasta_ext))
     fastas = [
-        {"path": filepath, "timestamp": time.ctime(os.path.getmtime(filepath))} 
+        {"path": filepath, "timestamp": time.ctime(os.path.getmtime(filepath))}
         for filepath in filelist
     ]
     # look for tables, more than one is allowed
-    filelist=[]
+    filelist = []
     for fd in watched_folders:
         filelist.extend(find_files(fd, table_ext))
     tables = [
-        {"path": filepath, "timestamp": time.ctime(os.path.getmtime(filepath))} 
+        {"path": filepath, "timestamp": time.ctime(os.path.getmtime(filepath))}
         for filepath in filelist
     ]
     # make manifest as json

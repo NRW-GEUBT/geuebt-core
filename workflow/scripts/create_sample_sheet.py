@@ -26,7 +26,7 @@ def main(isolate_sheets, dirout, fasta_prefix):
     for sample in samples:
         if not sample["organism"] in ssheets:
             organism = sample["organism"]
-            ssheets[organism] = pd.DataFrame(columns=["sample","assembly"])
+            ssheets[organism] = pd.DataFrame(columns=["sample", "assembly"])
         fasta_path = os.path.abspath(
             os.path.join(fasta_prefix, sample["fasta_name"])
         )
@@ -34,7 +34,7 @@ def main(isolate_sheets, dirout, fasta_prefix):
             [
                 ssheets[organism],
                 pd.DataFrame({"sample": [sample['isolate_id']], "assembly": [fasta_path]})
-            ], 
+            ],
             ignore_index=True
         )
     for k, v in ssheets.items():

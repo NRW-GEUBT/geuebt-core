@@ -26,7 +26,7 @@ def main(vali_status, chewie_status, status):
         valiqc = json.load(fi)
     for k in valiqc.keys():
         call_values = callqc.get(
-            k, 
+            k,
             {"STATUS": "FAIL", "MESSAGES": ["Allele calling not performed"]}
         )
         valiqc[k]["STATUS"] = call_values["STATUS"]
