@@ -83,8 +83,8 @@ rule mongo_push_isolate:
     output:
         flag=touch("dbops/push_isolates.flag"),
     params:
-        host=config["mongodb_host'],
-        port=config["mongodb_port'],
+        host=config["mongodb_host"],
+        port=config["mongodb_port"],
         database=config["mongodb_database"],
     conda:
         "../envs/mongodb.yaml"

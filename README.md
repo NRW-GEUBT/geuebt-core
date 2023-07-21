@@ -1,4 +1,4 @@
-# Geübt Validate
+# Geübt Core
 
 Data validation module of the Geübt application.
 
