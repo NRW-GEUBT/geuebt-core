@@ -31,7 +31,7 @@ def aggregate_over_species_from_chewie(wildcards):
         ),
         "clusters": expand(
             "call_and_cluster/{species}/staging/clusters.json", species=ids_map
-        )
+        ),
     }
 
 
@@ -44,7 +44,7 @@ def aggregate_clusters(wildcards):
 
 
 def aggregate_isolate_sheets(wildcards):
-    checkpoint_output = checkpoints.move_and_split_chewie_results.get(  
+    checkpoint_output = checkpoints.move_and_split_chewie_results.get(
         **wildcards
     ).output["isolates"]
     ids_map = glob_wildcards(os.path.join(checkpoint_output, "{isolate}.json")).isolate
@@ -56,4 +56,4 @@ def aggregate_fastas(wildcards):
         **wildcards
     ).output["isolates"]
     ids_map = glob_wildcards(os.path.join(checkpoint_output, "{isolate}.json")).isolate
-    return expand("validation/staging/fastas/{isolate}.fa",isolate=ids_map)
+    return expand("validation/staging/fastas/{isolate}.fa", isolate=ids_map)

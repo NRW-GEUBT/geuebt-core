@@ -31,7 +31,7 @@ def main(cluster_paths, host, port, database):
         collection.replace_one(
             {"cluster_id": cluster["cluster_id"]},
             cluster,
-            upsert = True,
+            upsert=True,
             comment="Automated <replace_one> of cluster sheet from Geuebt-Core"
         )
 
