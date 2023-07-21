@@ -9,6 +9,8 @@ watched_folders:
   - data/input_1
   - data/input_2
 
+fasta_store: fasta_dump
+
 max_threads_per_job: 1
 
 geuebt-validate_path: ~/.nrw-geuebt/geuebt-validate

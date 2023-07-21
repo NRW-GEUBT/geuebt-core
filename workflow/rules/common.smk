@@ -65,3 +65,12 @@ def aggregate_isolate_sheets(wildcards):
     ).isolate
     return expand("staging/isolates_sheets/{isolate}.json",
         isolate=ids_map)
+
+
+def aggregate_fastas(wildcards):
+    checkpoint_output = checkpoints.move_and_split_chewie_results.get(**wildcards).output["isolates"]
+    ids_map = glob_wildcards(
+        os.path.join(checkpoint_output, "{isolate}.json")
+    ).isolate
+    return expand("validation/staging/fastas/{isolate}.fa",
+        isolate=ids_map)

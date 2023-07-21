@@ -31,6 +31,7 @@ rule all:
         "staging/qc_status.json",
         "dbops/push_clusters.flag",
         "dbops/push_isolates.flag",
+        "dbops/stage_fastas.flag",
 
 
 # Includes --------------------------------------------------------------------

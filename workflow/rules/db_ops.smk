@@ -29,6 +29,8 @@ rule make_isolate_sheet:
         calling="call_and_cluster/staging/isolates_sheets/{isolate}.json",
     output:
         isolate_sheet="staging/isolates_sheets/{isolate}.json",
+    params:
+        fastadump=config["fasta_store"],
     message:
         "[Database operations] Creating isolate sheet"
     conda:
@@ -37,6 +39,25 @@ rule make_isolate_sheet:
         "logs/make_isolate_sheet_{isolate}.log",
     script:
         "../scripts/make_isolate_sheet.py"
+
+
+rule stage_fastas:
+    input:
+        fastas=aggregate_fastas,
+    output:
+        flag=touch("dbops/stage_fastas.flag"),
+    params:
+        fastadump=config["fasta_store"],
+    conda:
+        "../envs/pandas.yaml"
+    log:
+        "logs/stage_fastas.log",
+    shell:
+        """
+        exec 2> {log}
+        mkdir -p {params.fastadump}
+        cp -p {input.fastas} {params.fastadump}
+        """
 
 
 rule mongo_push_clusters:
