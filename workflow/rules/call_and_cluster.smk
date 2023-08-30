@@ -73,7 +73,7 @@ rule chewie:
 rule merge_qcstatus:
     input:
         vali_status="validation/staging/validation_status.json",
-        chewie_status=lambda w: aggregate_over_species_from_chewie(w)["qc_status"],
+        chewie_status=lambda w: aggregate_over_species(w)["qc_status"],
     output:
         status="staging/qc_status.json",
     message:
@@ -88,8 +88,8 @@ rule merge_qcstatus:
 
 checkpoint move_and_split_chewie_results:
     input:
-        isolate_sheets=lambda w: aggregate_over_species_from_chewie(w)["isolate_sheets"],
-        clusters=lambda w: aggregate_over_species_from_chewie(w)["clusters"],
+        isolate_sheets=lambda w: aggregate_over_species(w)["isolate_sheets"],
+        clusters=lambda w: aggregate_over_species(w)["clusters"],
     output:
         # move clusters to root staging directly since they won't be processed further
         isolates=directory("call_and_cluster/staging/isolates_sheets"),
@@ -99,6 +99,6 @@ checkpoint move_and_split_chewie_results:
     conda:
         "../envs/pandas.yaml"
     log:
-        "logs/move_isolate_sheets.log",
+        "logs/move_isolate_sheets_chewie.log",
     script:
         "../scripts/move_and_split_chewie_results.py"

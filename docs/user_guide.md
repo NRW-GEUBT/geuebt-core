@@ -89,6 +89,7 @@ Following named parameters are required:
 | `cluster_distance` | integer | Allele difference threshold for main cluster definition |
 | `subcluster_distance` | integer | Allele difference threshold for sub-cluster definition |
 | `cluster_prefix` | string | A short string to use as prefix for cluster naming |
+| `charak_tag` | string | Species tag for bakcharak, see the documentation to add new species |
 
 ### Optional parameters
 
@@ -99,6 +100,7 @@ Following parameters are optional and will revert to defaults if not set:
 | `max_threads_per_job` | integer | 1 | Max number of threads assigned to a single job |
 | `geuebt-validate_path` | path-like string | Default installation in `~/.nrw-geuebt/` | Path to the validate module folder |
 | `geuebt-chewie_path` | path-like string | Default installation in `~/.nrw-geuebt/` | Path to the chewie module folder |
+| `geuebt-charak_path` | path-like string | Default installation in `~/.nrw-geuebt/` | Path to the charak module folder |
 | `cleanup_watched_dirs` | boolean | False | Whether to delete the data from the watched folder |
 | `mongodb_host` | string | localhost | MongoDB host |
 | `mongodb_port` | integer | 27017 | MongoDB port |

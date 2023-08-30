@@ -18,8 +18,8 @@ def get_local_time():
 
 
 # Input functions ------------------------------------
-def aggregate_over_species_from_chewie(wildcards):
-    "Aggregate chewie rule outputs over the species wildcard and returns a dict of file lists"
+def aggregate_over_species(wildcards):
+    "Aggregate chewie and charak rule outputs over the species wildcard and returns a dict of file lists"
     checkpoint_output = checkpoints.create_sample_sheets.get(**wildcards).output[0]
     ids_map = glob_wildcards(os.path.join(checkpoint_output, "{species}.tsv")).species
     return {
@@ -31,6 +31,9 @@ def aggregate_over_species_from_chewie(wildcards):
         ),
         "clusters": expand(
             "call_and_cluster/{species}/staging/clusters.json", species=ids_map
+        ),
+        "charak_sheets": expand(
+            "charak/{species}/staging/merged_sheets.json", species=ids_map
         ),
     }
 
@@ -45,6 +48,10 @@ def aggregate_clusters(wildcards):
 
 def aggregate_isolate_sheets(wildcards):
     checkpoint_output = checkpoints.move_and_split_chewie_results.get(
+        **wildcards
+    ).output["isolates"]
+    # force claculation of charak checkpoint
+    checkpoints.move_and_split_charak_results.get(
         **wildcards
     ).output["isolates"]
     ids_map = glob_wildcards(os.path.join(checkpoint_output, "{isolate}.json")).isolate

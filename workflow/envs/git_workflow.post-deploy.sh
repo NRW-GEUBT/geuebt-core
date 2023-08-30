@@ -38,3 +38,15 @@ tag="0.2.0"
 local_dir="$HOME/.nrw-geuebt/geuebt-chewie/"
 
 echo "Deploying Geuebt-chewie" && deploy
+
+## Geuebt Charak
+# Repo URL
+repo="https://github.com/NRW-GEUBT/geuebt-charak"
+
+# Commit hash to use
+tag="0.1.0"
+
+# Local directory to save the Repo
+local_dir="$HOME/.nrw-geuebt/geuebt-charak/"
+
+echo "Deploying Geuebt-charak" && deploy
