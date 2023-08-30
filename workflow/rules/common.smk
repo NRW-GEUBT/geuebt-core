@@ -51,9 +51,7 @@ def aggregate_isolate_sheets(wildcards):
         **wildcards
     ).output["isolates"]
     # force claculation of charak checkpoint
-    checkpoints.move_and_split_charak_results.get(
-        **wildcards
-    ).output["isolates"]
+    checkpoints.move_and_split_charak_results.get(**wildcards).output["isolates"]
     ids_map = glob_wildcards(os.path.join(checkpoint_output, "{isolate}.json")).isolate
     return expand("staging/isolates_sheets/{isolate}.json", isolate=ids_map)
 

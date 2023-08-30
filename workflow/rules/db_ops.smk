@@ -26,7 +26,7 @@ rule make_isolate_sheet:
     input:
         validation="validation/staging/isolates_sheets/{isolate}.json",
         calling="call_and_cluster/staging/isolates_sheets/{isolate}.json",
-        charak="charak/staging/isolates_sheets/{isolate}.json"
+        charak="charak/staging/isolates_sheets/{isolate}.json",
     output:
         isolate_sheet="staging/isolates_sheets/{isolate}.json",
     params:
