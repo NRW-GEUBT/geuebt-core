@@ -83,11 +83,36 @@ pytest .tests/unit
 #### Integration test
 
 It is always a good idea to verify that the workflow runs properly as a whole.
-For this activate a conda enviroment with a recent version of snakemake (see the
+For this follow this steps:
+
+Unpack the cgMSLT scheme:
+
+```bash
+mkdir -p .tests/integration/data/Ruppitsch_chewbbacca
+tar -xzf .tests/integration/data/Ruppitsch_chewbbacca.tar.gz -C .tests/integration/data/Ruppitsch_chewbbacca --strip-components 1
+```
+
+Create a test database, this requires an environement with pymongo installed:
+
+```bash
+conda create mongod -c conda-forge pymongo
+conda activate mongod
+python .tests/testdb/make_test_db.py
+```
+
+finally activate a conda enviroment with a recent version of snakemake (see the
 documentation) and run the following test:
 
 ```bash
+conda activate snakemake
 snakemake --cores 1 --use-conda --configfile .tests/integration/config/config.yaml
+```
+
+You can clean up the test database by running the following:
+
+```bash
+conda activate mongod
+python .tests/testdb/cleanup_db.py
 ```
 
 ### License

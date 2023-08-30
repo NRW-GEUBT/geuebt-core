@@ -1,0 +1,68 @@
+# Integration test config
+# ----------------------
+
+
+workdir: .tests/integration
+
+
+watched_folders: 
+  - data/input_1
+  - data/input_2
+
+fasta_store: fasta_dump
+
+max_threads_per_job: 1
+
+geuebt-validate_path: ~/.nrw-geuebt/geuebt-validate
+geuebt-chewie_path: ~/.nrw-geuebt/geuebt-chewie
+geuebt-charak_path: ~/.nrw-geuebt/geuebt-charak
+
+# Should watched dirs be emptied?
+cleanup_watched_dirs: False
+
+# Mongo Databse address
+mongodb_host: 'localhost'
+mongodb_port: 27017
+mongodb_database: 'geuebt-test'
+
+# Species-specific args:
+# Add more species as see fit. Naming is taken from the allowed organism names (see Validate module)
+# spaces are replaced by an underscore and points are striped: "Campylobacter spp." becomes "Campylobacter_spp"
+Listeria_monocytogenes:
+    prodigal: "~/.nrw-geuebt/chewieSnake/chewBBACA/CHEWBBACA/prodigal_training_files/Listeria_monocytogenes.trn"
+    # Need to adjust path because absolutes paths normally needed and workflow execution within a workflow is messing up relative paths
+    cgmlst_scheme: "../../data/Listeria_cgmlst_Ruppitsch_chewbbaca/cgmlst"
+    cluster_distance: 10
+    subcluster_distance: 3
+    cluster_prefix: "LIS"
+    charak_tag: "Listeria"
+
+Salmonella_enterica:
+    prodigal: "~/.nrw-geuebt/chewieSnake/chewBBACA/CHEWBBACA/prodigal_training_files/Salmonella_enterica.trn"
+    cgmlst_scheme: "../../data/Listeria_cgmlst_Ruppitsch_chewbbaca/cgmlst"
+    cluster_distance: 10
+    subcluster_distance: 3
+    cluster_prefix: "SAL"
+    charak_tag: "Salmonella"
+
+Campylobacter_spp:
+    prodigal: "~/.nrw-geuebt/chewieSnake/chewBBACA/CHEWBBACA/prodigal_training_files/Campylobacter_jejuni.trn"
+    cgmlst_scheme: "../../data/Listeria_cgmlst_Ruppitsch_chewbbaca/cgmlst"
+    cluster_distance: 15
+    subcluster_distance: 5
+    cluster_prefix: "CAM"
+    charak_tag: "Campylobacter"
+
+Escherichia_coli:
+    prodigal: "~/.nrw-geuebt/chewieSnake/chewBBACA/CHEWBBACA/prodigal_training_files/Escherichia_coli.trn"
+    cgmlst_scheme: "../../data/Listeria_cgmlst_Ruppitsch_chewbbaca/cgmlst"
+    cluster_distance: 5
+    subcluster_distance: 2
+    cluster_prefix: "TEC"
+    charak_tag: "Ecoli"
+
+# Supp parameters to implement
+validation_min_contig_length: 500 
+max_missing_loci: 0.05
+distance_method: 3
+clustering_method: "single"

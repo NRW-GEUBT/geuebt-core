@@ -1,0 +1,65 @@
+{
+    "isolate_id": "2016-0001077",
+    "sample_id": "2016-0001077",
+    "organism": "Listeria monocytogenes",
+    "isolate_name_alt": null,
+    "third_party_flag": "true",
+    "third_party_owner": "BfR",
+    "sample_type": "unknown",
+    "fasta_name": "2016-0001077.fa",
+    "fasta_md5": "a5efd9417a7a1e73c3f51f60506d2918",
+    "isolation": {
+        "org_name": "unknown"
+    },
+    "sequencing": {
+        "org_name": "OWL",
+        "extraction_method": null,
+        "library_method": null,
+        "sequencing_instrument": null
+    },
+    "bioinformatics": {
+        "org_name": "OWL",
+        "assembly_method": null
+    },
+    "epidata": {
+        "collection_date": "2016-01-01",
+        "municipality": "unknown",
+        "country": "DE",
+        "cause": "Proficiency Test",
+        "collected_by": "unknown",
+        "manufacturer": null,
+        "designation": "unknown",
+        "manufacturer_type": "unknown",
+        "sample_description": "unkown",
+        "lot_number": null
+    },
+    "mlst": {
+        "sequence_type": "9",
+        "scheme": "listeria_2",
+        "alleles": {
+            "dat": "1",
+            "cat": "6",
+            "dapE": "4",
+            "bglA": "5",
+            "lhkA": "1",
+            "abcZ": "6",
+            "ldh": "4"
+        }
+    },
+    "qc_metrics": {
+        "sequencing_depth": 45.6,
+        "ref_coverage": 0.99,
+        "q30": 0.9,
+        "N50": 428683,
+        "L50": 4,
+        "n_contigs_1kbp": 24,
+        "assembly_size": 3004939,
+        "GC_perc": 37.84,
+        "orthologs_found": 100.0,
+        "duplicated_orthologs": 1.6,
+        "majority_genus": "Listeria",
+        "fraction_majority_genus": 1.0,
+        "majority_species": "Listeria monocytogenes",
+        "fraction_majority_species": 1.0
+    }
+}

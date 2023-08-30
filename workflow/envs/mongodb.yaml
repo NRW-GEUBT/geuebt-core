@@ -1,0 +1,7 @@
+name: mongod
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - "pymongo>=4.0"

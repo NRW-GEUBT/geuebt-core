@@ -1,4 +1,7 @@
+# Welcome to the documentation of Geübt-Validate
 
-# Welcome to the documentation of REPO
+This is the Core module of NRW-GEÜBT.
 
-TBD
+Users provided metadata and assemblies are processed and compared to
+the data from a local database.
+Data for the new assemblies are saved to the database and cluster information is updated.

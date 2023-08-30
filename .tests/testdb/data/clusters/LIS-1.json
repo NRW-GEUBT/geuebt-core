@@ -1,0 +1,22 @@
+{
+    "cluster_id": "LIS-1",
+    "cluster_number": 1,
+    "organism": "Listeria monocytogenes",
+    "size": 2,
+    "representative": "2016-0000296",
+    "AD_threshold": 10,
+    "root_members": [],
+    "subclusters": [
+        {
+            "subcluster_id": "LIS-1.1",
+            "subcluster_number": 1,
+            "size": 2,
+            "representative": "2016-0000296",
+            "AD_threshold": 3,
+            "members": [
+                "2016-0000296",
+                "2016-0000501"
+            ]
+        }
+    ]
+}
