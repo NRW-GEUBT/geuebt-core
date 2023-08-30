@@ -48,7 +48,7 @@ include: "rules/db_ops.smk"
 
 
 onstart:
-    print(f"\nYou are using <REPO NAME> version: {version}")
+    print(f"\nYou are using GEUEBT-CORE version: {version}")
     with open(pipe_log, "a") as f:
         f.write(f"[{get_local_time()}]: Pipeline started\n")
 
@@ -72,7 +72,7 @@ onerror:
     print(
         f"\nAn error occured, please consider filing an bug report."
         f"\n"
-        f"\nIssue tracker: <ISSUE LINK>"
+        f"\nIssue tracker: https://github.com/NRW-GEUBT/geuebt-core/issues/new/choose"
     )
     with open(pipe_log, "a") as f:
         f.write(f"[{get_local_time()}]: Pipeline stopped on error\n")
