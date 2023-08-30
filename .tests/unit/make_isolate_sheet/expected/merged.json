@@ -1,28 +1,28 @@
 {
-    "isolate_id": "2022-0232977-01",
-    "sample_id": "2022-0232977",
-    "organism": "Salmonella enterica",
+    "isolate_id": "2016-0001077",
+    "sample_id": "2016-0001077",
+    "organism": "Listeria monocytogenes",
     "isolate_name_alt": null,
     "third_party_flag": "true",
     "third_party_owner": "BfR",
     "sample_type": "unknown",
-    "fasta_name": "0232977-01.fasta",
-    "fasta_md5": "b9621a5adb8e59cbea8034bfc04fca44",
+    "fasta_name": "2016-0001077.fa",
+    "fasta_md5": "a5efd9417a7a1e73c3f51f60506d2918",
     "isolation": {
         "org_name": "unknown"
     },
     "sequencing": {
-        "org_name": "RRW",
+        "org_name": "OWL",
         "extraction_method": null,
         "library_method": null,
         "sequencing_instrument": null
     },
     "bioinformatics": {
-        "org_name": "RRW",
+        "org_name": "OWL",
         "assembly_method": null
     },
     "epidata": {
-        "collection_date": "2023-03-28",
+        "collection_date": "2016-01-01",
         "municipality": "unknown",
         "country": "DE",
         "cause": "Proficiency Test",
@@ -34,35 +34,106 @@
         "lot_number": null
     },
     "mlst": {
-        "sequence_type": "34",
-        "scheme": "senterica_achtman_2",
+        "sequence_type": "9",
+        "scheme": "listeria_2",
         "alleles": {
-            "purE": "5",
-            "hemD": "12",
-            "thrA": "2",
-            "sucA": "9",
-            "hisD": "9",
-            "dnaN": "19",
-            "aroC": "10"
+            "dat": "1",
+            "cat": "6",
+            "dapE": "4",
+            "bglA": "5",
+            "lhkA": "1",
+            "abcZ": "6",
+            "ldh": "4"
         }
     },
     "qc_metrics": {
         "sequencing_depth": 45.6,
         "ref_coverage": 0.99,
         "q30": 0.9,
-        "N50": 284333,
-        "L50": 5,
-        "n_contigs_1kbp": 53,
-        "assembly_size": 4960041,
-        "GC_perc": 52.13,
-        "orthologs_found": 98.4,
-        "duplicated_orthologs": 0.0,
-        "majority_genus": "Salmonella",
-        "fraction_majority_genus": 0.9971668689656122,
-        "majority_species": "Salmonella enterica",
-        "fraction_majority_species": 0.9971575751364787,
-        "cgmlst_missing_fraction": 0.0035481963335304554
+        "N50": 428683,
+        "L50": 4,
+        "n_contigs_1kbp": 24,
+        "assembly_size": 3004939,
+        "GC_perc": 37.84,
+        "orthologs_found": 100.0,
+        "duplicated_orthologs": 1.6,
+        "majority_genus": "Listeria",
+        "fraction_majority_genus": 1.0,
+        "majority_species": "Listeria monocytogenes",
+        "fraction_majority_species": 1.0,
+        "cgmlst_missing_fraction": 0.0059136605558840925
     },
+    "fasta_store": "fastadump",
+    "characterization": {
+        "amr": {
+            "count_amr_genes": 2,
+            "count_amr_genes_acquired": 2,
+            "count_amr_genes_pointmutations": 0,
+            "amr_genes": "fosX;vga(G)",
+            "count_amr_bymobility": "chromosome (2)",
+            "amrclassinfo": {
+                "count_amr_classes": 2,
+                "amr_classes": "FOSFOMYCIN;LINCOSAMIDE",
+                "count_amr_subclasses": 2,
+                "amr_subclasses": "FOSFOMYCIN;LINCOSAMIDE"
+            },
+            "amr_genes_byclass": "FOSFOMYCIN (fosX);LINCOSAMIDE (vga(G))",
+            "count_amr_genes_byclass": "FOSFOMYCIN (1);LINCOSAMIDE (1)",
+            "count_amr_genes_bysubclass": "FOSFOMYCIN (1);LINCOSAMIDE (1)",
+            "amr_genes_bysubclass": "FOSFOMYCIN (fosX);LINCOSAMIDE (vga(G))",
+            "count_amr_phenotypes": 0,
+            "amr_phenotypes": "",
+            "esbl_detected": {
+                "esbl_detected": false
+            },
+            "stress_genes": {
+                "METAL": {
+                    "genes": {
+                        "genes_by_type": "cadC"
+                    },
+                    "count": {
+                        "count": 1
+                    }
+                }
+            },
+            "count_stress_genes_bytype": "METAL (1)",
+            "stress_genes_bytype": "METAL (cadC)"
+        },
+        "virulence": {
+            "count_virulencefactors": 35,
+            "virulencefactors": "prsA2;hbp1;hbp2;bsh;lpeA;lspA;fbpA;inlC;inlK;oatA;lap;lapB;inlJ;clpC;vip;inlF;pdgA;inlA;inlB;lntA;iap;ami;gtcA;inlP;clpP;clpE;aut;hpt;lplA1;prfA;plcA;hly;mpl;actA;plcB",
+            "count_virulencefactors_byclass": "Adherence (7);Exoenzyme (1);Exotoxin (3);Immune_modulation (5);Invasion (6);Motility (1);Nutritional/Metabolic_factor (4);Post-translational_modification (3);Regulation (1);Stress_survival (4)"
+        },
+        "plasmids": {
+            "count_INC": 1,
+            "INC_types": "rep25_2_M640p00130(J1776plasmid)",
+            "cumulative_plasmid_length": 58648,
+            "plasmid_contigs": 4,
+            "circular_contigs": 0,
+            "replication_elements": 1,
+            "mobilization_elements": 1,
+            "conjugation_elements": 0,
+            "count_OriT": 0,
+            "plasmid_fasta": "NA"
+        },
+        "reference_information": {
+            "reference_species": "Listeria monocytogenes",
+            "reference_genus": "Listeria",
+            "reference_identity": 0.99,
+            "reference_accession": "GCF_900036625.1",
+            "reference_genome": " Listeria monocytogenes strain 2842STDY5753913 genome"
+        },
+        "Listeria": {
+            "serotype": "1/2c, 3c",
+            "PRS": "FULL",
+            "LMO0737": "FULL",
+            "LMO1118": "FULL",
+            "ORF2110": "NONE",
+            "ORF2819": "NONE",
+            "comment": "NA"
+        }
+    },
+    "isolate_id": "2016-0001077",
     "cgmlst": {
         "allele_profile": [
             {
@@ -143,7 +214,7 @@
             },
             {
                 "locus": "lmo0027.fasta",
-                "allele_crc32": 1235023222
+                "allele_crc32": 3811343568
             },
             {
                 "locus": "lmo0029.fasta",
@@ -339,7 +410,7 @@
             },
             {
                 "locus": "lmo0162.fasta",
-                "allele_crc32": 904409669
+                "allele_crc32": 3409392412
             },
             {
                 "locus": "lmo0163.fasta",
@@ -399,7 +470,7 @@
             },
             {
                 "locus": "lmo0195.fasta",
-                "allele_crc32": 3604819839
+                "allele_crc32": 2256602695
             },
             {
                 "locus": "lmo0198.fasta",
@@ -519,7 +590,7 @@
             },
             {
                 "locus": "lmo0239.fasta",
-                "allele_crc32": 4101141797
+                "allele_crc32": 1939443556
             },
             {
                 "locus": "lmo0240.fasta",
@@ -575,7 +646,7 @@
             },
             {
                 "locus": "lmo0261.fasta",
-                "allele_crc32": 2614782606
+                "allele_crc32": 2469479241
             },
             {
                 "locus": "lmo0266.fasta",
@@ -703,7 +774,7 @@
             },
             {
                 "locus": "lmo0343.fasta",
-                "allele_crc32": 3292935334
+                "allele_crc32": "-"
             },
             {
                 "locus": "lmo0344.fasta",
@@ -891,7 +962,7 @@
             },
             {
                 "locus": "lmo0433.fasta",
-                "allele_crc32": 197513563
+                "allele_crc32": "-"
             },
             {
                 "locus": "lmo0437.fasta",
@@ -903,7 +974,7 @@
             },
             {
                 "locus": "lmo0441.fasta",
-                "allele_crc32": 1991228817
+                "allele_crc32": 1339755171
             },
             {
                 "locus": "lmo0442.fasta",
@@ -1003,7 +1074,7 @@
             },
             {
                 "locus": "lmo0509.fasta",
-                "allele_crc32": 3561156299
+                "allele_crc32": 3833001507
             },
             {
                 "locus": "lmo0511.fasta",
@@ -1127,7 +1198,7 @@
             },
             {
                 "locus": "lmo0557.fasta",
-                "allele_crc32": 245222593
+                "allele_crc32": 1461131229
             },
             {
                 "locus": "lmo0558.fasta",
@@ -1159,7 +1230,7 @@
             },
             {
                 "locus": "lmo0569.fasta",
-                "allele_crc32": 3112246368
+                "allele_crc32": 4069162531
             },
             {
                 "locus": "lmo0572.fasta",
@@ -1319,7 +1390,7 @@
             },
             {
                 "locus": "lmo0639.fasta",
-                "allele_crc32": 3168797720
+                "allele_crc32": 3232185263
             },
             {
                 "locus": "lmo0640.fasta",
@@ -1351,7 +1422,7 @@
             },
             {
                 "locus": "lmo0650.fasta",
-                "allele_crc32": 3174523243
+                "allele_crc32": 4048969772
             },
             {
                 "locus": "lmo0651.fasta",
@@ -1511,7 +1582,7 @@
             },
             {
                 "locus": "lmo0705.fasta",
-                "allele_crc32": 3218482354
+                "allele_crc32": 2727967402
             },
             {
                 "locus": "lmo0706.fasta",
@@ -1707,7 +1778,7 @@
             },
             {
                 "locus": "lmo0796.fasta",
-                "allele_crc32": 275738641
+                "allele_crc32": 2426769093
             },
             {
                 "locus": "lmo0797.fasta",
@@ -1759,7 +1830,7 @@
             },
             {
                 "locus": "lmo0814.fasta",
-                "allele_crc32": 2755965428
+                "allele_crc32": 3743534894
             },
             {
                 "locus": "lmo0817.fasta",
@@ -1955,11 +2026,11 @@
             },
             {
                 "locus": "lmo0892.fasta",
-                "allele_crc32": 1841084303
+                "allele_crc32": 1625141220
             },
             {
                 "locus": "lmo0895.fasta",
-                "allele_crc32": 3101251230
+                "allele_crc32": 4049175011
             },
             {
                 "locus": "lmo0896.fasta",
@@ -2023,7 +2094,7 @@
             },
             {
                 "locus": "lmo0913.fasta",
-                "allele_crc32": 2898390653
+                "allele_crc32": 3887570683
             },
             {
                 "locus": "lmo0914.fasta",
@@ -2079,7 +2150,7 @@
             },
             {
                 "locus": "lmo0931.fasta",
-                "allele_crc32": 945207241
+                "allele_crc32": "-"
             },
             {
                 "locus": "lmo0932.fasta",
@@ -2283,7 +2354,7 @@
             },
             {
                 "locus": "lmo1007.fasta",
-                "allele_crc32": 3298542651
+                "allele_crc32": 2201516800
             },
             {
                 "locus": "lmo1008.fasta",
@@ -2303,7 +2374,7 @@
             },
             {
                 "locus": "lmo1012.fasta",
-                "allele_crc32": 1529815939
+                "allele_crc32": 753953322
             },
             {
                 "locus": "lmo1013.fasta",
@@ -2343,7 +2414,7 @@
             },
             {
                 "locus": "lmo1027.fasta",
-                "allele_crc32": 1672336675
+                "allele_crc32": 2525506261
             },
             {
                 "locus": "lmo1028.fasta",
@@ -2355,7 +2426,7 @@
             },
             {
                 "locus": "lmo1037.fasta",
-                "allele_crc32": 862916946
+                "allele_crc32": 806389758
             },
             {
                 "locus": "lmo1039.fasta",
@@ -2375,7 +2446,7 @@
             },
             {
                 "locus": "lmo1049.fasta",
-                "allele_crc32": 4240794676
+                "allele_crc32": 2591676171
             },
             {
                 "locus": "lmo1050.fasta",
@@ -2543,7 +2614,7 @@
             },
             {
                 "locus": "lmo1175.fasta",
-                "allele_crc32": 554812180
+                "allele_crc32": 2698917909
             },
             {
                 "locus": "lmo1176.fasta",
@@ -2567,7 +2638,7 @@
             },
             {
                 "locus": "lmo1181.fasta",
-                "allele_crc32": 2632722268
+                "allele_crc32": 3359997394
             },
             {
                 "locus": "lmo1182.fasta",
@@ -2631,7 +2702,7 @@
             },
             {
                 "locus": "lmo1208.fasta",
-                "allele_crc32": 253556442
+                "allele_crc32": 994315159
             },
             {
                 "locus": "lmo1210.fasta",
@@ -3271,7 +3342,7 @@
             },
             {
                 "locus": "lmo1448.fasta",
-                "allele_crc32": 3165611625
+                "allele_crc32": 1683174436
             },
             {
                 "locus": "lmo1450.fasta",
@@ -3395,7 +3466,7 @@
             },
             {
                 "locus": "lmo1493.fasta",
-                "allele_crc32": 3652211733
+                "allele_crc32": 2338959855
             },
             {
                 "locus": "lmo1494.fasta",
@@ -3443,7 +3514,7 @@
             },
             {
                 "locus": "lmo1509.fasta",
-                "allele_crc32": 2215764417
+                "allele_crc32": 1314117513
             },
             {
                 "locus": "lmo1510.fasta",
@@ -3731,7 +3802,7 @@
             },
             {
                 "locus": "lmo1604.fasta",
-                "allele_crc32": 2673460620
+                "allele_crc32": 1236437738
             },
             {
                 "locus": "lmo1605.fasta",
@@ -3819,7 +3890,7 @@
             },
             {
                 "locus": "lmo1638.fasta",
-                "allele_crc32": 2213388772
+                "allele_crc32": 3630745932
             },
             {
                 "locus": "lmo1639.fasta",
@@ -4003,7 +4074,7 @@
             },
             {
                 "locus": "lmo1712.fasta",
-                "allele_crc32": 396050626
+                "allele_crc32": 2342074530
             },
             {
                 "locus": "lmo1713.fasta",
@@ -4039,7 +4110,7 @@
             },
             {
                 "locus": "lmo1730.fasta",
-                "allele_crc32": 1952864364
+                "allele_crc32": 3334322861
             },
             {
                 "locus": "lmo1731.fasta",
@@ -4319,7 +4390,7 @@
             },
             {
                 "locus": "lmo1825.fasta",
-                "allele_crc32": 2026867651
+                "allele_crc32": 373186956
             },
             {
                 "locus": "lmo1826.fasta",
@@ -4327,7 +4398,7 @@
             },
             {
                 "locus": "lmo1827.fasta",
-                "allele_crc32": 469220108
+                "allele_crc32": 3160565630
             },
             {
                 "locus": "lmo1828.fasta",
@@ -4507,7 +4578,7 @@
             },
             {
                 "locus": "lmo1886.fasta",
-                "allele_crc32": 1546000912
+                "allele_crc32": 525285825
             },
             {
                 "locus": "lmo1887.fasta",
@@ -4519,7 +4590,7 @@
             },
             {
                 "locus": "lmo1890.fasta",
-                "allele_crc32": 911640071
+                "allele_crc32": 2621943162
             },
             {
                 "locus": "lmo1891.fasta",
@@ -4555,7 +4626,7 @@
             },
             {
                 "locus": "lmo1900.fasta",
-                "allele_crc32": 2141978738
+                "allele_crc32": 2321336968
             },
             {
                 "locus": "lmo1902.fasta",
@@ -4683,7 +4754,7 @@
             },
             {
                 "locus": "lmo1947.fasta",
-                "allele_crc32": 3901728181
+                "allele_crc32": 2625741975
             },
             {
                 "locus": "lmo1948.fasta",
@@ -4783,7 +4854,7 @@
             },
             {
                 "locus": "lmo1991.fasta",
-                "allele_crc32": 2974484212
+                "allele_crc32": 55498188
             },
             {
                 "locus": "lmo1992.fasta",
@@ -5063,7 +5134,7 @@
             },
             {
                 "locus": "lmo2091.fasta",
-                "allele_crc32": 3629256741
+                "allele_crc32": 3353211258
             },
             {
                 "locus": "lmo2092.fasta",
@@ -5111,7 +5182,7 @@
             },
             {
                 "locus": "lmo2111.fasta",
-                "allele_crc32": 534770273
+                "allele_crc32": 2165986739
             },
             {
                 "locus": "lmo2112.fasta",
@@ -5311,7 +5382,7 @@
             },
             {
                 "locus": "lmo2206.fasta",
-                "allele_crc32": 298668457
+                "allele_crc32": 1567538447
             },
             {
                 "locus": "lmo2207.fasta",
@@ -5379,7 +5450,7 @@
             },
             {
                 "locus": "lmo2230.fasta",
-                "allele_crc32": 1428328697
+                "allele_crc32": 1231174791
             },
             {
                 "locus": "lmo2232.fasta",
@@ -5439,7 +5510,7 @@
             },
             {
                 "locus": "lmo2253.fasta",
-                "allele_crc32": 1813294569
+                "allele_crc32": 2997421511
             },
             {
                 "locus": "lmo2254.fasta",
@@ -5559,7 +5630,7 @@
             },
             {
                 "locus": "lmo2362.fasta",
-                "allele_crc32": 3049407623
+                "allele_crc32": 2972729618
             },
             {
                 "locus": "lmo2363.fasta",
@@ -6071,7 +6142,7 @@
             },
             {
                 "locus": "lmo2546.fasta",
-                "allele_crc32": 4176728182
+                "allele_crc32": 384479971
             },
             {
                 "locus": "lmo2547.fasta",
@@ -6111,7 +6182,7 @@
             },
             {
                 "locus": "lmo2566.fasta",
-                "allele_crc32": 1831976635
+                "allele_crc32": 1205679472
             },
             {
                 "locus": "lmo2567.fasta",
@@ -6151,7 +6222,7 @@
             },
             {
                 "locus": "lmo2582.fasta",
-                "allele_crc32": 3357774380
+                "allele_crc32": 3539034045
             },
             {
                 "locus": "lmo2583.fasta",
@@ -6163,7 +6234,7 @@
             },
             {
                 "locus": "lmo2585.fasta",
-                "allele_crc32": 2996091236
+                "allele_crc32": 3207801697
             },
             {
                 "locus": "lmo2586.fasta",
@@ -6303,7 +6374,7 @@
             },
             {
                 "locus": "lmo2633.fasta",
-                "allele_crc32": 101384238
+                "allele_crc32": 2277021754
             },
             {
                 "locus": "lmo2634.fasta",
@@ -6419,7 +6490,7 @@
             },
             {
                 "locus": "lmo2667.fasta",
-                "allele_crc32": 3573779526
+                "allele_crc32": 3165356723
             },
             {
                 "locus": "lmo2668.fasta",
@@ -6567,7 +6638,7 @@
             },
             {
                 "locus": "lmo2723.fasta",
-                "allele_crc32": 1171711969
+                "allele_crc32": 2742082489
             },
             {
                 "locus": "lmo2724.fasta",
@@ -6603,7 +6674,7 @@
             },
             {
                 "locus": "lmo2743.fasta",
-                "allele_crc32": 3292935334
+                "allele_crc32": "-"
             },
             {
                 "locus": "lmo2744.fasta",
@@ -6831,11 +6902,11 @@
             }
         ],
         "allele_stats": {
-            "EXC": 1685,
+            "EXC": 1681,
             "INF": 0,
-            "LNF": 1,
+            "LNF": 3,
             "PLOT": 0,
-            "NIPH": 2,
+            "NIPH": 4,
             "ALM": 3,
             "ASM": 0
         }
