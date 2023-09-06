@@ -9,5 +9,3 @@ To modify the data validation schema, see the documentation of the validation mo
 To add new organism you need to :
 - add the validation parameters to the schema (see validation module documentation)
 - add parameters to the core config
-
-
