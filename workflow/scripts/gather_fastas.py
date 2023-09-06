@@ -20,7 +20,7 @@ import json
 def main(manifest, cleanup, fastadir):
     if not os.path.isdir(fastadir):
         os.mkdir(fastadir)
-    # if cleaningup then move the files, otherwise copy
+    # if cleaning up then move the files, otherwise copy
     func = shutil.move if cleanup else shutil.copy
     with open(manifest, "r") as fi:
         jdict = json.load(fi)

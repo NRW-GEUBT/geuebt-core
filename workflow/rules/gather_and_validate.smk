@@ -99,15 +99,20 @@ rule validate_input:
 checkpoint create_sample_sheets:
     input:
         isolate_sheets="validation/staging/isolates_datasheet.json",
+        qc_in="validation/staging/validation_status.json",
     output:
         # files are named "Genus_species.tsv", points are striped
         dirout=directory("sample_sheets"),
+        qc_out="validation/staging/validation_status_ids_checked.json",
     params:
         fasta_prefix="validation/staging/fastas",
+        host=config["mongodb_host"],
+        port=config["mongodb_port"],
+        database=config["mongodb_database"],
     conda:
-        "../envs/pandas.yaml"
+        "../envs/mongodb.yaml"
     message:
-        "[Gather and validate] Creating species-wise sample sheets"
+        "[Gather and validate] Validating IDs and creating species-wise sample sheets"
     log:
         "logs/create_sample_sheets.log",
     script:

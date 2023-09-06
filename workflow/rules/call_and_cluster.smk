@@ -72,7 +72,7 @@ rule chewie:
 
 rule merge_qcstatus:
     input:
-        vali_status="validation/staging/validation_status.json",
+        vali_status="validation/staging/validation_status_ids_checked.json",
         chewie_status=lambda w: aggregate_over_species(w)["qc_status"],
     output:
         status="staging/qc_status.json",
