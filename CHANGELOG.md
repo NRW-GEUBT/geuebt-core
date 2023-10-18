@@ -1,3 +1,7 @@
+### 0.1.2
+
+Bump geuebt-chewie to v0.3.0
+
 ### 0.1.1
 
 Will reject samples whose field 'isolate_id' is already used in the database.

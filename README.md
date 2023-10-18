@@ -1,6 +1,6 @@
 # Geübt Core
 
-Data validation module of the Geübt application.
+Core module of the Geübt application.
 
 ## Usage
 
