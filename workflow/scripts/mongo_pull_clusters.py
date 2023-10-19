@@ -12,6 +12,7 @@ except NameError:
     pass
 
 
+import os
 import pathlib
 from json import dumps
 from pymongo import MongoClient
@@ -92,9 +93,9 @@ def main(
 
     # For the profile, need to read in the file names from scheme
     if not profiles:
-        fastanames = list(pathlib.Path(scheme).glob('*.fasta'))
+        fastanames = [os.path.split(p)[1] for p in list(pathlib.Path(scheme).glob('*.fasta'))]
         profiles = {"#FILE": [""]}
-        profiles.update({filename: "" for filename in fastanames})
+        profiles.update({filename: [""] for filename in fastanames})
     tbl = pd.read_json(dumps(profiles), orient="records")
     tbl.to_csv(profiles_path, sep="\t", index=False)
 
