@@ -64,31 +64,39 @@ def main(
         massaged_profiles = {entry["locus"]: entry["allele_crc32"] for entry in sample["cgmlst"]["allele_profile"]}
         profiles.append({"#FILE": sample["isolate_id"], **massaged_profiles})
 
-    # Ensure valid files headers
-    for d, header in zip(
+    for d, header, path in zip(
         [main, sub, timestamps, statistics],
         [
-            {"sample": "", "cluster_name": ""},
-            {"sample": "", "cluster_name": ""},
-            {"sample": "", "date": ""},
-            {"sample": "", "EXC": "", "INF": "", "LNF": "", "PLOT": "", "NIPH": "", "ALM": "", "ASM": ""}
-        ]
+            {"sample": [""], "cluster_name": [""]},
+            {"sample": [""], "cluster_name": [""]},
+            {"sample": [""], "date": [""]},
+            {
+                "sample": [""],
+                "EXC": [""],
+                "INF": [""],
+                "LNF": [""], 
+                "PLOT": [""],
+                "NIPH": [""],
+                "ALM": [""],
+                "ASM": [""]
+            }
+        ],
+        [clusters_path, subclusters_path, timestamps_path, statistics_path]
     ):
+        # Ensure valid files headers
         if not d:
             d = header
+        # Dump everything in tables
+        tbl = pd.read_json(dumps(d), orient="records")
+        tbl.to_csv(path, sep="\t", index=False)
+
     # For the profile, need to read in the file names from scheme
     if not profiles:
         fastanames = list(pathlib.Path(scheme).glob('*.fasta'))
-        profiles = {"#FILE": ""}
+        profiles = {"#FILE": [""]}
         profiles.update({filename: "" for filename in fastanames})
-
-    # Dump everything in tables
-    for d, path in zip(
-        [main, sub, timestamps, statistics, profiles],
-        [clusters_path, subclusters_path, timestamps_path, statistics_path, profiles_path]
-    ):
-        tbl = pd.read_json(dumps(d), orient="records")
-        tbl.to_csv(path, sep="\t", index=False)
+    tbl = pd.read_json(dumps(profiles), orient="records")
+    tbl.to_csv(profiles_path, sep="\t", index=False)
 
 
 if __name__ == "__main__":
