@@ -75,7 +75,7 @@ def main(
                 "sample": [""],
                 "EXC": [""],
                 "INF": [""],
-                "LNF": [""], 
+                "LNF": [""],
                 "PLOT": [""],
                 "NIPH": [""],
                 "ALM": [""],
