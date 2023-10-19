@@ -1,3 +1,7 @@
+### 0.1.3
+
+Fix generation of files for chewie when the database is initally empty
+
 ### 0.1.2
 
 Bump geuebt-chewie to v0.3.0
