@@ -1,4 +1,8 @@
-### 0.1.4 
+### 0.1.5
+
+Bump geuebt-validate to v0.1.6
+
+### 0.1.4
 
 Bump geuebt-validate to v0.1.5
 

@@ -32,6 +32,7 @@ def main(isolate_sheets, qc_in, dirout, qc_out, fasta_prefix, host, port, databa
     ssheets = {}
     with open(isolate_sheets, "r") as fi:
         samples = json.load(fi)
+    print(len(samples))
     for sample in samples:
         # Checking if isolate_id is already in use
         # if it is then do not add sample to sample sheet and add error message to QC_sheet.
@@ -42,6 +43,7 @@ def main(isolate_sheets, qc_in, dirout, qc_out, fasta_prefix, host, port, databa
             continue
 
         # if the isolate_id is available then add smaple to ssample sheet
+        # print(sample)
         if not sample["organism"] in ssheets:
             organism = sample["organism"]
             ssheets[organism] = pd.DataFrame(columns=["sample", "assembly"])
