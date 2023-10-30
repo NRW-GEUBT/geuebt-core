@@ -1,3 +1,8 @@
+### 0.1.6
+
+- Fix sample sheet creation when mutliple organisms present in dataset
+- Fix creation of empty cluster and isolates desription files when the database is initially empty
+
 ### 0.1.5
 
 Bump geuebt-validate to v0.1.6
