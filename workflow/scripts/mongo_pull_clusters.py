@@ -101,7 +101,7 @@ def main(
         fastanames = [os.path.split(p)[1] for p in list_scheme_files(scheme)]
         header = f"#FILE\t{tab.join(fastanames)}\n"
         with open(profiles_path, "w") as fo:
-                fo.write(header)
+            fo.write(header)
     else:
         tbl = pd.read_json(dumps(profiles), orient="records")
         tbl.to_csv(profiles_path, sep="\t", index=False)

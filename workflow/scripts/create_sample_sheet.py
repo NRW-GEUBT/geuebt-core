@@ -44,7 +44,7 @@ def main(isolate_sheets, qc_in, dirout, qc_out, fasta_prefix, host, port, databa
 
         # if the isolate_id is available then add smaple to ssample sheet
         organism = sample["organism"]
-        if not organism in ssheets.keys():
+        if organism not in ssheets.keys():
             ssheets[organism] = pd.DataFrame(columns=["sample", "assembly"])
 
         fasta_path = os.path.abspath(
