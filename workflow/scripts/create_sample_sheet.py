@@ -32,20 +32,19 @@ def main(isolate_sheets, qc_in, dirout, qc_out, fasta_prefix, host, port, databa
     ssheets = {}
     with open(isolate_sheets, "r") as fi:
         samples = json.load(fi)
-    print(len(samples))
+    # connect to db
+    collection = db_connect(host, port, database)['isolates']
     for sample in samples:
         # Checking if isolate_id is already in use
         # if it is then do not add sample to sample sheet and add error message to QC_sheet.
-        collection = db_connect(host, port, database)['isolates']
         if collection.find_one({"isolate_id": sample["isolate_id"]}):
             qc[sample["isolate_id"]]["STATUS"] = "FAIL"
             qc[sample["isolate_id"]]["MESSAGES"].append("This isolate_id is already in use.")
             continue
 
         # if the isolate_id is available then add smaple to ssample sheet
-        # print(sample)
-        if not sample["organism"] in ssheets:
-            organism = sample["organism"]
+        organism = sample["organism"]
+        if not organism in ssheets.keys():
             ssheets[organism] = pd.DataFrame(columns=["sample", "assembly"])
 
         fasta_path = os.path.abspath(
