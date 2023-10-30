@@ -68,36 +68,31 @@ def main(
     for d, header, path in zip(
         [main, sub, timestamps, statistics],
         [
-            {"sample": [""], "cluster_name": [""]},
-            {"sample": [""], "cluster_name": [""]},
-            {"sample": [""], "date": [""]},
-            {
-                "sample": [""],
-                "EXC": [""],
-                "INF": [""],
-                "LNF": [""],
-                "PLOT": [""],
-                "NIPH": [""],
-                "ALM": [""],
-                "ASM": [""]
-            }
+            "sample\tcluster_name",
+            "sample\tcluster_name",
+            "sample\tdate",
+            "sample\tEXC\tINF\tLNF\tPLOT\tNIPH\tALM\tASM"
         ],
         [clusters_path, subclusters_path, timestamps_path, statistics_path]
     ):
-        # Ensure valid files headers
+        # if no data, write the header to file
         if not d:
-            d = header
-        # Dump everything in tables
-        tbl = pd.read_json(dumps(d), orient="records")
-        tbl.to_csv(path, sep="\t", index=False)
+            with open(path, "w") as fo:
+                fo.write(header)
+        else:
+            # Dump everything in tables
+            tbl = pd.read_json(dumps(d), orient="records")
+            tbl.to_csv(path, sep="\t", index=False)
 
-    # For the profile, need to read in the file names from scheme
+    # For the profile, same but need to read in the file names from scheme
     if not profiles:
         fastanames = [os.path.split(p)[1] for p in list(pathlib.Path(scheme).glob('*.fasta'))]
-        profiles = {"#FILE": [""]}
-        profiles.update({filename: [""] for filename in fastanames})
-    tbl = pd.read_json(dumps(profiles), orient="records")
-    tbl.to_csv(profiles_path, sep="\t", index=False)
+        header = "#FILE\t" + "\t".join(fastanames)
+        with open(profiles_path, "w") as fo:
+                fo.write(header)
+    else:
+        tbl = pd.read_json(dumps(profiles), orient="records")
+        tbl.to_csv(profiles_path, sep="\t", index=False)
 
 
 if __name__ == "__main__":
