@@ -13,16 +13,27 @@ except NameError:
 
 
 import os
-import pathlib
+import glob
 from json import dumps
 from pymongo import MongoClient
 import pandas as pd
+
+
+FASTA_EXT = [".fa", ".faa", ".fna", ".ffn", ".frn", ".fasta"]
 
 
 def db_connect(host, port, database):
     client = MongoClient(host, port)
     db = client[database]
     return db
+
+
+def list_scheme_files(folder, exts=FASTA_EXT):
+    files = []
+    for ext in exts:
+        pathstring = os.path.join(folder, f"*{ext}")
+        files.extend(glob.glob(pathstring))
+    return files
 
 
 def main(
@@ -68,10 +79,10 @@ def main(
     for d, header, path in zip(
         [main, sub, timestamps, statistics],
         [
-            "sample\tcluster_name",
-            "sample\tcluster_name",
-            "sample\tdate",
-            "sample\tEXC\tINF\tLNF\tPLOT\tNIPH\tALM\tASM"
+            "sample\tcluster_name\n",
+            "sample\tcluster_name\n",
+            "sample\tdate\n",
+            "sample\tEXC\tINF\tLNF\tPLOT\tNIPH\tALM\tASM\n"
         ],
         [clusters_path, subclusters_path, timestamps_path, statistics_path]
     ):
@@ -86,8 +97,9 @@ def main(
 
     # For the profile, same but need to read in the file names from scheme
     if not profiles:
-        fastanames = [os.path.split(p)[1] for p in list(pathlib.Path(scheme).glob('*.fasta'))]
-        header = "#FILE\t" + "\t".join(fastanames)
+        tab = "\t"  # backlash forbidden in f-strings
+        fastanames = [os.path.split(p)[1] for p in list_scheme_files(scheme)]
+        header = f"#FILE\t{tab.join(fastanames)}\n"
         with open(profiles_path, "w") as fo:
                 fo.write(header)
     else:
