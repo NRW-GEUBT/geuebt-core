@@ -30,6 +30,7 @@ rule chewie:
         subcluster_distance=lambda w: config[w.species]["subcluster_distance"],
         cluster_prefix=lambda w: config[w.species]["cluster_prefix"],
         cgmlst_scheme=lambda w: config[w.species]["cgmlst_scheme"],
+        organism=lambda w: config[w.species].replace("_", " ").replace("spp", "spp."),
         # Workflow needs absolute paths! And using lambda to get wildcard value
         sample_sheet=lambda w: f"{os.getcwd()}/sample_sheets/{w.species}.tsv",
         external_main_clusters=lambda w: f"{os.getcwd()}/db_data/{w.species}/clusters.tsv",
@@ -66,7 +67,8 @@ rule chewie:
                      clustering_method="single" \
                      cluster_distance={params.cluster_distance} \
                      subcluster_distance={params.subcluster_distance} \
-                     cluster_prefix={params.cluster_prefix}
+                     cluster_prefix={params.cluster_prefix} \
+                     organism={params.organism}
         """
 
 
