@@ -29,7 +29,6 @@ def test_make_isolate_sheet():
             validation=os.path.join(workdir, 'validation.json'),
             calling=os.path.join(workdir, 'calling.json'),
             charak=os.path.join(workdir, 'charak.json'),
-            fastadump="fastadump",
             pathout=os.path.join(workdir, "result.json"),
         )
 
