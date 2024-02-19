@@ -21,7 +21,7 @@ def get_conda_prefix():
     try: 
         # snakemake < 8.0
         return workflow.conda_prefix
-    else:
+    except:
         # snakemake > 8
         return workflow.deployment_settings.conda_prefix
 
