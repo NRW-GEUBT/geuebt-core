@@ -15,14 +15,13 @@ except NameError:
 import json
 
 
-def main(validation, calling, charak, fastadump, pathout):
+def main(validation, calling, charak, pathout):
     with open(validation, "r") as fi:
         vali = json.load(fi)
     with open(calling, "r") as fi:
         call = json.load(fi)
     with open(charak, "r") as fi:
         char = json.load(fi)
-    vali["fasta_store"] = fastadump
     vali["qc_metrics"]["cgmlst_missing_fraction"] = call["qc_metrics"]["cgmlst_missing_fraction"]
     vali["characterization"] = char["characterization"]
     vali["cgmlst"] = call["cgmlst"]
@@ -35,6 +34,5 @@ if __name__ == '__main__':
         snakemake.input['validation'],
         snakemake.input['calling'],
         snakemake.input['charak'],
-        snakemake.params['fastadump'],
         snakemake.output['isolate_sheet']
     )

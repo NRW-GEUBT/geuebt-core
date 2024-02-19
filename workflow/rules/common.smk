@@ -17,8 +17,8 @@ def get_local_time():
     return time.asctime(time.localtime(time.time()))
 
 
-def get_conda_prefix():
-    try: 
+def get_conda_prefix(wildcards):
+    try:
         # snakemake < 8.0
         return workflow.conda_prefix
     except:

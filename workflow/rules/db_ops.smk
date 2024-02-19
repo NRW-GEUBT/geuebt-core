@@ -29,8 +29,6 @@ rule make_isolate_sheet:
         charak="charak/staging/isolates_sheets/{isolate}.json",
     output:
         isolate_sheet="staging/isolates_sheets/{isolate}.json",
-    params:
-        fastadump=config["fasta_store"],
     message:
         "[Database operations] Creating isolate sheet"
     conda:
