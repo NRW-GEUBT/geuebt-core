@@ -26,13 +26,13 @@ def main(status, host, port, database):
     collection = db_connect(host, port, database)['runs']
     # Load status
     with open(status, "r") as fi:
-        doc = json.load(fi))
+        doc = json.load(fi)
     collection.insert_one(doc, comment="Automated <insert_one> of qc_status from Geuebt-Core")
 
 
 if __name__ == "__main__":
     main(
-        snakemake.input["status"],
+        snakemake.input["qc_status"],
         snakemake.params["host"],
         snakemake.params["port"],
         snakemake.params["database"],

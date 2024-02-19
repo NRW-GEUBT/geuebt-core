@@ -15,11 +15,15 @@ except NameError:
 import os
 import json
 import glob
-import time
+from datetime import datetime
 
 
 FASTA_EXT = [".fa", ".faa", ".fna", ".ffn", ".frn", ".fasta"]
 TABLE_EXT = [".csv", ".tsv", ".txt"]
+
+
+def iso_timestamp(file):
+    return datetime.fromtimestamp(os.path.getmtime(file)).isoformat()
 
 
 def find_files(folder, exts):
@@ -36,7 +40,7 @@ def main(watched_folders, manifest_path, fasta_ext=FASTA_EXT, table_ext=TABLE_EX
     for fd in watched_folders:
         filelist.extend(find_files(fd, fasta_ext))
     fastas = [
-        {"path": filepath, "timestamp": time.ctime(os.path.getmtime(filepath))}
+        {"path": filepath, "timestamp": iso_timestamp(filepath)}
         for filepath in filelist
     ]
     # look for tables, more than one is allowed
@@ -44,7 +48,7 @@ def main(watched_folders, manifest_path, fasta_ext=FASTA_EXT, table_ext=TABLE_EX
     for fd in watched_folders:
         filelist.extend(find_files(fd, table_ext))
     tables = [
-        {"path": filepath, "timestamp": time.ctime(os.path.getmtime(filepath))}
+        {"path": filepath, "timestamp": iso_timestamp(filepath)}
         for filepath in filelist
     ]
     # make manifest as json

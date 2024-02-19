@@ -30,8 +30,8 @@ rule all:
     input:
         "dbops/push_clusters.flag",
         "dbops/push_isolates.flag",
-        "dbops/stage_fastas.flag",
-		"dbops/push_status.flag"
+        "dbops/push_fastas.flag",
+        "dbops/push_status.flag",
 
 
 # Includes --------------------------------------------------------------------
