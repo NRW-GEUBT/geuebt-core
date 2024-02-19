@@ -11,7 +11,7 @@ rule charak:
     params:
         max_threads_per_job=config["max_threads_per_job"],
         charak_path=f"{config['geuebt-charak_path']}/workflow/Snakefile",
-        conda_prefix={workflow.conda_prefix},
+        conda_prefix=get_conda_prefix,
         species_tag=lambda w: config[w.species]["charak_tag"],
         sample_sheet=lambda w: f"{os.getcwd()}/sample_sheets/{w.species}.tsv",
     message:
