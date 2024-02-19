@@ -25,7 +25,7 @@ rule charak:
         """
         exec 2> {log}
         snakemake -s {params.charak_path} \
-            --use-conda \
+            --use-conda --keep-incomplete \
             --conda-prefix {params.conda_prefix} \
             --cores {threads} \
             --config workdir={output.workdir} \

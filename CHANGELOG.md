@@ -1,3 +1,7 @@
+### 0.1.8
+
+Bump validate module to 0.1.1
+
 ### 0.1.7
 
 - Fix organism name in cluster sheets

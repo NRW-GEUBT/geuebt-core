@@ -92,3 +92,20 @@ rule mongo_push_isolate:
         "logs/mongo_push_isolates.log",
     script:
         "../scripts/mongo_push_isolates.py"
+
+
+rule mongo_push_qc:
+    input:
+        qc_status="staging/qc_status.json",
+    output:
+        flag=touch("dbops/push_status.flag")
+    params:
+        host=config["mongodb_host"],
+        port=config["mongodb_port"],
+        database=config["mongodb_database"],
+    conda:
+        "../envs/mongodb.yaml"
+    log:
+        "logs/mongo_push_status.log",
+    script:
+        "../scripts/mongo_push_status.py"

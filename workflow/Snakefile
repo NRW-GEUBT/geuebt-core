@@ -28,10 +28,10 @@ include: "rules/common.smk"
 
 rule all:
     input:
-        "staging/qc_status.json",
         "dbops/push_clusters.flag",
         "dbops/push_isolates.flag",
         "dbops/stage_fastas.flag",
+		"dbops/push_status.flag"
 
 
 # Includes --------------------------------------------------------------------
