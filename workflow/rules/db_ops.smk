@@ -96,7 +96,7 @@ rule mongo_push_status:
     input:
         qc_status="staging/qc_status.json",
     output:
-        flag=touch("dbops/push_status.flag")
+        flag=touch("dbops/push_status.flag"),
     params:
         host=config["mongodb_host"],
         port=config["mongodb_port"],

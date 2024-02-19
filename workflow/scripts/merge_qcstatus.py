@@ -14,7 +14,8 @@ except NameError:
 
 import json
 from datetime import datetime
-import pwd, os
+import pwd
+import os
 
 
 def main(vali_status, chewie_status, status, ver):
@@ -47,7 +48,7 @@ def main(vali_status, chewie_status, status, ver):
             "isolate_id" : k ,
             "STATUS": v["STATUS"],
             "MESSAGES": v["MESSAGES"]
-        } for k,v in tmp_dict.items()
+        } for k, v in tmp_dict.items()
     ]
 
     with open(status, "w") as fo:

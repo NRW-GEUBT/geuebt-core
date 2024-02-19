@@ -14,5 +14,6 @@ def main(host, port):
     db.runs.drop()
     db.sequences.drop()
 
+
 if __name__ == '__main__':
     main(HOST, PORT)
