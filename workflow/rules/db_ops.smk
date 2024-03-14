@@ -29,8 +29,6 @@ rule make_isolate_sheet:
         charak="charak/staging/isolates_sheets/{isolate}.json",
     output:
         isolate_sheet="staging/isolates_sheets/{isolate}.json",
-    params:
-        fastadump=config["fasta_store"],
     message:
         "[Database operations] Creating isolate sheet"
     conda:
@@ -41,23 +39,21 @@ rule make_isolate_sheet:
         "../scripts/make_isolate_sheet.py"
 
 
-rule stage_fastas:
+rule push_fastas:
     input:
         fastas=aggregate_fastas,
     output:
-        flag=touch("dbops/stage_fastas.flag"),
+        flag=touch("dbops/push_fastas.flag"),
     params:
-        fastadump=config["fasta_store"],
+        host=config["mongodb_host"],
+        port=config["mongodb_port"],
+        database=config["mongodb_database"],
     conda:
-        "../envs/pandas.yaml"
+        "../envs/mongodb.yaml"
     log:
-        "logs/stage_fastas.log",
-    shell:
-        """
-        exec 2> {log}
-        mkdir -p {params.fastadump}
-        cp -p {input.fastas} {params.fastadump}
-        """
+        "logs/push_fastas.log",
+    script:
+        "../scripts/mongo_push_fastas.py"
 
 
 rule mongo_push_clusters:
@@ -92,3 +88,20 @@ rule mongo_push_isolate:
         "logs/mongo_push_isolates.log",
     script:
         "../scripts/mongo_push_isolates.py"
+
+
+rule mongo_push_status:
+    input:
+        qc_status="staging/qc_status.json",
+    output:
+        flag=touch("dbops/push_status.flag"),
+    params:
+        host=config["mongodb_host"],
+        port=config["mongodb_port"],
+        database=config["mongodb_database"],
+    conda:
+        "../envs/mongodb.yaml"
+    log:
+        "logs/mongo_push_status.log",
+    script:
+        "../scripts/mongo_push_status.py"

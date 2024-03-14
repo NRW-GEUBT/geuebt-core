@@ -17,6 +17,15 @@ def get_local_time():
     return time.asctime(time.localtime(time.time()))
 
 
+def get_conda_prefix(wildcards):
+    try:
+        # snakemake < 8.0
+        return workflow.conda_prefix
+    except:
+        # snakemake > 8
+        return workflow.deployment_settings.conda_prefix
+
+
 # Input functions ------------------------------------
 def aggregate_over_species(wildcards):
     "Aggregate chewie and charak rule outputs over the species wildcard and returns a dict of file lists"

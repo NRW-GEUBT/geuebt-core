@@ -46,6 +46,7 @@
             "ldh": "4"
         }
     },
+    "created_at": "2024-03-15",
     "qc_metrics": {
         "sequencing_depth": 45.6,
         "ref_coverage": 0.99,
@@ -63,7 +64,6 @@
         "fraction_majority_species": 1.0,
         "cgmlst_missing_fraction": 0.0059136605558840925
     },
-    "fasta_store": "fastadump",
     "characterization": {
         "amr": {
             "count_amr_genes": 2,

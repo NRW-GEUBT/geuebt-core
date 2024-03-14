@@ -70,7 +70,7 @@ rule validate_input:
     params:
         max_threads_per_job=config["max_threads_per_job"],
         geva_path=f"{config['geuebt-validate_path']}/workflow/Snakefile",
-        conda_prefix={workflow.conda_prefix},
+        conda_prefix=get_conda_prefix,
         # Absolute paths needed for workflow
         fastadir=f"{os.getcwd()}/inputs/fastas",
         metadata=f"{os.getcwd()}/inputs/metadata.tsv",

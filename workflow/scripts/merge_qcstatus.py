@@ -13,9 +13,12 @@ except NameError:
 
 
 import json
+from datetime import datetime
+import pwd
+import os
 
 
-def main(vali_status, chewie_status, status):
+def main(vali_status, chewie_status, status, ver):
     callqc = {}
     # merge over species
     for filepath in chewie_status:
@@ -23,21 +26,39 @@ def main(vali_status, chewie_status, status):
             callqc.update(json.load(fi))
     # merge validation and calling status
     with open(vali_status, "r") as fi:
-        valiqc = json.load(fi)
-    for k in valiqc.keys():
+        tmp_dict = json.load(fi)
+    for k in tmp_dict.keys():
         call_values = callqc.get(
             k,
             {"STATUS": "FAIL", "MESSAGES": ["Allele calling not performed"]}
         )
-        valiqc[k]["STATUS"] = call_values["STATUS"]
-        valiqc[k]["MESSAGES"].extend(call_values["MESSAGES"])
+        tmp_dict[k]["STATUS"] = call_values["STATUS"]
+        tmp_dict[k]["MESSAGES"].extend(call_values["MESSAGES"])
+
+    # rearrange entrys in DB friendly manner
+    qcstatus = {
+        "run_metadata": {
+            "date": datetime.now().isoformat(),
+            "geuebt_version": ver,
+            "user": pwd.getpwuid(os.getuid()).pw_name
+        }
+    }
+    qcstatus["samples"] = [
+        {
+            "isolate_id" : k ,
+            "STATUS": v["STATUS"],
+            "MESSAGES": v["MESSAGES"]
+        } for k, v in tmp_dict.items()
+    ]
+
     with open(status, "w") as fo:
-        json.dump(valiqc, fo, indent=4)
+        json.dump(qcstatus, fo, indent=4)
 
 
 if __name__ == '__main__':
     main(
         snakemake.input['vali_status'],
         snakemake.input['chewie_status'],
-        snakemake.output['status']
+        snakemake.output['status'],
+        snakemake.params["geuebt_version"]
     )

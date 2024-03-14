@@ -9,11 +9,10 @@ DATABASE = 'geuebt-test'
 def main(host, port):
     client = MongoClient(host, port)
     db = client[DATABASE]
-    isolates_coll = db.isolates
-    clusters_coll = db.clusters
-
-    isolates_coll.drop()
-    clusters_coll.drop()
+    db.isolates.drop()
+    db.clusters.drop()
+    db.runs.drop()
+    db.sequences.drop()
 
 
 if __name__ == '__main__':
