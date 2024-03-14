@@ -38,4 +38,7 @@ def test_make_isolate_sheet():
         ) as res, open(
             os.path.join(expected_path, 'merged.json'), 'r'
         ) as expect:
-            assert load(res) == load(expect)
+            res_json = load(res)
+            assert "created_at" in res_json
+            res_json["created_at"] = "2024-03-15"
+            assert res_json == load(expect)

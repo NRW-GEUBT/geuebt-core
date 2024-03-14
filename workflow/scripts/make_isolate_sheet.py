@@ -13,6 +13,7 @@ except NameError:
 
 
 import json
+from datetime import datetime
 
 
 def main(validation, calling, charak, pathout):
@@ -22,6 +23,7 @@ def main(validation, calling, charak, pathout):
         call = json.load(fi)
     with open(charak, "r") as fi:
         char = json.load(fi)
+    vali["created_at"] = datetime.now().strftime('%Y-%m-%d')
     vali["qc_metrics"]["cgmlst_missing_fraction"] = call["qc_metrics"]["cgmlst_missing_fraction"]
     vali["characterization"] = char["characterization"]
     vali["cgmlst"] = call["cgmlst"]

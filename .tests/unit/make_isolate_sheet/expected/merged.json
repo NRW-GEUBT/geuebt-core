@@ -46,6 +46,7 @@
             "ldh": "4"
         }
     },
+    "created_at": "2024-03-15",
     "qc_metrics": {
         "sequencing_depth": 45.6,
         "ref_coverage": 0.99,
