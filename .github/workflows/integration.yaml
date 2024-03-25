@@ -55,9 +55,7 @@ jobs:
     
     - name: Setup Database
       run: |
-        python -m pip install --upgrade pip
-        pip install pymongo==4.4.1
-        python .tests/testdb/make_test_db.py
+        bash .tests/testdb/make_testdb.sh
     
     # Actual testing not possible due to space limitations... Needs to optimize writting 
     # For now just dry run to spot obvious problems

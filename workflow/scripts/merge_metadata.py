@@ -23,7 +23,10 @@ def main(manifest, metadata_path):
         pd.read_csv(entry["path"], sep="\t")
         for entry in manifest_dict["metadata"]
     ]
-    merged = pd.concat(dfs, axis=0)
+    if len(dfs) > 1:
+        merged = pd.concat(dfs, axis=0)
+    else:
+        merged = dfs[0]
     merged.to_csv(metadata_path, sep="\t", index=False)
 
 

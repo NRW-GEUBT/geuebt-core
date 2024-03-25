@@ -8,6 +8,7 @@ workdir: .tests/integration
 watched_folders: 
   - data/input_1
   - data/input_2
+  # - data/input_3
 
 max_threads_per_job: 1
 
