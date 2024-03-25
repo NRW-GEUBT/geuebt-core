@@ -1,3 +1,7 @@
+### 0.2.1
+
+Bump geuebt-validate to 0.2.1
+
 ### 0.1.8
 
 Bump validate module to 0.1.1
