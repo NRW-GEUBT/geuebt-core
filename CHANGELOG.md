@@ -1,3 +1,7 @@
+### 0.2.2
+
+Bump geuebt-chewie to 0.3.1
+
 ### 0.2.1
 
 Bump geuebt-validate to 0.2.1
