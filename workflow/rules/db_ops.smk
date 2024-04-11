@@ -41,6 +41,8 @@ rule make_isolate_sheet:
 
 rule push_fastas:
     input:
+        # Force wait for everything to finish before pushing
+        status="staging/qc_status.json",
         fastas=aggregate_fastas,
     output:
         flag=touch("dbops/push_fastas.flag"),
@@ -58,6 +60,8 @@ rule push_fastas:
 
 rule mongo_push_clusters:
     input:
+        # Force wait for everything to finish before pushing
+        status="staging/qc_status.json",
         clusters=aggregate_clusters,
     output:
         flag=touch("dbops/push_clusters.flag"),
@@ -75,6 +79,8 @@ rule mongo_push_clusters:
 
 rule mongo_push_isolate:
     input:
+        # Force wait for everything to finish before pushing
+        status="staging/qc_status.json",
         isolates=aggregate_isolate_sheets,
     output:
         flag=touch("dbops/push_isolates.flag"),

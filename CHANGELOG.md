@@ -1,3 +1,10 @@
+### 0.2.3
+
+Now register run name (Workdir name) in the run sheet
+Now waits for all critical steps to finish before commiting to database
+Bump validate to 0.2.5
+Bump chewie to 0.3.2
+
 ### 0.2.2
 
 Bump geuebt-chewie to 0.3.1
