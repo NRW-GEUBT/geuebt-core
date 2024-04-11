@@ -6,6 +6,9 @@
 # and run only the nescessary rules. At the end aggregate everything to staging
 
 
+import os
+
+
 rule chewie:
     # Inputs need absolute paths!
     input:
@@ -76,10 +79,13 @@ rule merge_qcstatus:
     input:
         vali_status="validation/staging/validation_status_ids_checked.json",
         chewie_status=lambda w: aggregate_over_species(w)["qc_status"],
+        # Force wait for charak to finish before allowing push
+        isolate_sheets=lambda w: aggregate_over_species(w)["charak_sheets"],
     output:
         status="staging/qc_status.json",
     params:
         geuebt_version=version,
+        workdir_path=os.getcwd()
     message:
         "[Call and cluster] Updating QC status"
     conda:
