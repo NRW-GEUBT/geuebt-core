@@ -1,3 +1,7 @@
+### 0.2.4
+
+Fix funky run order
+
 ### 0.2.3
 
 Now register run name (Workdir name) in the run sheet
