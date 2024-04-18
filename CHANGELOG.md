@@ -1,3 +1,9 @@
+
+### 0.2.5
+
+Update BakCharak
+Known Issue: Workflow is not working with snakemake8 for the time being. Make sure you use snakemake7.
+
 ### 0.2.4
 
 Fix funky run order

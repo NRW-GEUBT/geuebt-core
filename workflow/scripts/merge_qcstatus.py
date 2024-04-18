@@ -38,7 +38,7 @@ def main(vali_status, chewie_status, status, ver, workdir_path):
     # rearrange entrys in DB friendly manner
     qcstatus = {
         "run_metadata": {
-            "name":  os.path.basename(workdir_path),
+            "name": os.path.basename(workdir_path),
             "date": datetime.now().isoformat(),
             "geuebt_version": ver,
             "user": pwd.getpwuid(os.getuid()).pw_name

@@ -39,6 +39,25 @@ rule make_isolate_sheet:
         "../scripts/make_isolate_sheet.py"
 
 
+rule merge_qcstatus:
+    input:
+        vali_status="validation/staging/validation_status_ids_checked.json",
+        chewie_status=lambda w: aggregate_over_species(w)["qc_status"],
+    output:
+        status="staging/qc_status.json",
+    params:
+        geuebt_version=version,
+        workdir_path=config["workdir"],
+    message:
+        "[Call and cluster] Updating QC status"
+    conda:
+        "../envs/pandas.yaml"
+    log:
+        "logs/merge_qcstatus.log",
+    script:
+        "../scripts/merge_qcstatus.py"
+
+
 rule push_fastas:
     input:
         fastas=aggregate_fastas,
