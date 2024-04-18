@@ -47,7 +47,7 @@ rule merge_qcstatus:
         status="staging/qc_status.json",
     params:
         geuebt_version=version,
-        workdir_path=config['workdir'],
+        workdir_path=config["workdir"],
     message:
         "[Call and cluster] Updating QC status"
     conda:
