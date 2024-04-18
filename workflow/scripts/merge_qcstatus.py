@@ -18,7 +18,7 @@ import pwd
 import os
 
 
-def main(vali_status, chewie_status, status, ver):
+def main(vali_status, chewie_status, status, ver, workdir_path):
     callqc = {}
     # merge over species
     for filepath in chewie_status:
@@ -38,6 +38,7 @@ def main(vali_status, chewie_status, status, ver):
     # rearrange entrys in DB friendly manner
     qcstatus = {
         "run_metadata": {
+            "name": os.path.basename(workdir_path),
             "date": datetime.now().isoformat(),
             "geuebt_version": ver,
             "user": pwd.getpwuid(os.getuid()).pw_name
@@ -60,5 +61,6 @@ if __name__ == '__main__':
         snakemake.input['vali_status'],
         snakemake.input['chewie_status'],
         snakemake.output['status'],
-        snakemake.params["geuebt_version"]
+        snakemake.params["geuebt_version"],
+        snakemake.params["workdir_path"],
     )
