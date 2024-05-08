@@ -1,3 +1,6 @@
+### 0.2.6
+
+Update validate to fix date parsing and better handling of isolates with lots of plasmids
 
 ### 0.2.5
 
