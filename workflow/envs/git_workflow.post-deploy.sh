@@ -19,7 +19,7 @@ deploy () {
 repo="https://github.com/NRW-GEUBT/geuebt-validate"
 
 # Commit hash to use
-tag="0.2.5"
+tag="0.2.6"
 
 # Local directory to save the Repo
 local_dir="$HOME/.nrw-geuebt/geuebt-validate/"
