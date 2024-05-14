@@ -41,6 +41,7 @@ include: "rules/gather_and_validate.smk"
 include: "rules/call_and_cluster.smk"
 include: "rules/charak.smk"
 include: "rules/db_ops.smk"
+include: "rules/trees.smk"
 
 
 # Workflow --------------------------------------------------------------------
