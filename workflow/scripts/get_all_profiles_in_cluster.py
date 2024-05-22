@@ -12,6 +12,7 @@ except NameError:
     pass
 
 
+import os
 import json
 import pandas as pd
 from pymongo import MongoClient
@@ -23,7 +24,7 @@ def db_connect(host, port, database):
     return db
 
 
-def main(cluster_in, profiles_out, host, port, database):
+def main(cluster_in, profiles_out, host, port, database, isolates_dir):
     # Get isolates
     with open(cluster_in, "r") as fi:
         cluster = json.load(fi)
@@ -32,8 +33,18 @@ def main(cluster_in, profiles_out, host, port, database):
         isolates.extend([member for subcluster in cluster["subclusters"] for member in subcluster["members"]])
     except KeyError:
         pass
+    
+    # get local profiles
+    local_profiles = []
+    for isolate in isolates:
+        try:
+            with open(os.path.join(isolates_dir, f"{isolate}.json"), "r") as fi:
+                d = json.load(fi)
+            local_profiles.append({"isolate_id": isolate, "profile": d["cgmlst"]["allele_profile"]})
+        except FileNotFoundError:
+            pass
 
-    # Get profiles for all isolates
+    # Get profiles for isolates in db
     db = db_connect(host, port,database)
     profiles = list(db["isolates"].aggregate([
         {"$match": {"isolate_id": {"$in": isolates}}},
@@ -41,7 +52,16 @@ def main(cluster_in, profiles_out, host, port, database):
     ]))
 
     # Isolates without profiles should be cluster references, get the representative profile for these
-    notfound = list(set(isolates) - set([pro["isolate_id"] for pro in profiles]))
+    notfound = list(
+        set(
+            isolates
+        ) - set(
+            [pro["isolate_id"] for pro in profiles]
+        ) - set(
+            [pro["isolate_id"] for pro in local_profiles]
+        )
+    )
+    
     repr_samples = list(db["clusters"].aggregate([
         {"$match": {"cluster_id": {"$in": notfound}}},
         {"$project": {"_id": 0, "cluster_id": 1, "representative": 1}}
@@ -55,11 +75,11 @@ def main(cluster_in, profiles_out, host, port, database):
     for entry in repr_profiles:
         id = entry["isolate_id"]
         entry["isolate_id"] = repr_mapping[id]
-    
+
     # format and dump as tsv
-    profiles.extend(repr_profiles)
+    merged_profiles = local_profiles + repr_profiles + profiles
     reformat = {}
-    for entry in profiles:
+    for entry in merged_profiles:
         reformat.update(
             {entry["isolate_id"]: {locus["locus"]: locus["allele_crc32"] for locus in entry["profile"]}}
         )
@@ -75,4 +95,5 @@ if __name__ == '__main__':
         snakemake.params['host'],
         snakemake.params['port'],
         snakemake.params['database'],
+        snakemake.params['isolates_dir'],
     )

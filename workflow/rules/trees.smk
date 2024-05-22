@@ -15,6 +15,7 @@ rule get_all_profiles_in_cluster:
         host=config["mongodb_host"],
         port=config["mongodb_port"],
         database=config["mongodb_database"],
+        isolates_dir="call_and_cluster/staging/isolates_sheets",
     conda:
         "../envs/mongodb.yaml"
     message:

@@ -81,7 +81,7 @@ checkpoint move_and_split_chewie_results:
         clusters=lambda w: aggregate_over_species(w)["clusters"],
     output:
         isolates=directory("call_and_cluster/staging/isolates_sheets"),
-        clusters=directory("/trees/clusters"),
+        clusters=directory("call_and_cluster/staging/clusters/"),
     message:
         "[Call and cluster] Gathering and splitting chewie results"
     conda:

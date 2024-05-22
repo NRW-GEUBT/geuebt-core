@@ -29,7 +29,6 @@ def get_conda_prefix(wildcards):
 # Input functions ------------------------------------
 def aggregate_over_species(wildcards):
     "Aggregate chewie and charak rule outputs over the species wildcard and returns a dict of file lists"
-    print("Calling aggregate over species function")
     checkpoint_output = checkpoints.create_sample_sheets.get(**wildcards).output[0]
     ids_map = glob_wildcards(os.path.join(checkpoint_output, "{species}.tsv")).species
     return {
