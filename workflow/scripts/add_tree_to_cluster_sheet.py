@@ -19,9 +19,9 @@ def main(tree_in, json_in, json_out):
     with open(json_in, "r") as fi, open(tree_in, "r") as tree:
         cluster = json.load(fi)
         cluster["tree"] = tree.read()
-    with open(json_out,"w") as fo:
+    with open(json_out, "w") as fo:
         json.dump(cluster, fo, indent=4)
-    
+
 
 if __name__ == '__main__':
     main(

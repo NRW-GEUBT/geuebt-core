@@ -1,3 +1,8 @@
+### 0.2.7
+
+Add trees in Newick format to the cluster sheets
+Fix test DB in test configuration
+
 ### 0.2.6
 
 Update validate to fix date parsing and better handling of isolates with lots of plasmids

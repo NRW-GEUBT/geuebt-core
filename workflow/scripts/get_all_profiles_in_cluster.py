@@ -33,7 +33,7 @@ def main(cluster_in, profiles_out, host, port, database, isolates_dir):
         isolates.extend([member for subcluster in cluster["subclusters"] for member in subcluster["members"]])
     except KeyError:
         pass
-    
+
     # get local profiles
     local_profiles = []
     for isolate in isolates:
@@ -45,7 +45,7 @@ def main(cluster_in, profiles_out, host, port, database, isolates_dir):
             pass
 
     # Get profiles for isolates in db
-    db = db_connect(host, port,database)
+    db = db_connect(host, port, database)
     profiles = list(db["isolates"].aggregate([
         {"$match": {"isolate_id": {"$in": isolates}}},
         {"$project": {"_id": 0, "isolate_id": 1, "profile": "$cgmlst.allele_profile"}}
@@ -61,7 +61,7 @@ def main(cluster_in, profiles_out, host, port, database, isolates_dir):
             [pro["isolate_id"] for pro in local_profiles]
         )
     )
-    
+
     repr_samples = list(db["clusters"].aggregate([
         {"$match": {"cluster_id": {"$in": notfound}}},
         {"$project": {"_id": 0, "cluster_id": 1, "representative": 1}}

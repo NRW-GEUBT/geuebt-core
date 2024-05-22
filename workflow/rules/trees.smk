@@ -8,9 +8,9 @@
 
 rule get_all_profiles_in_cluster:
     input:
-        cluster = "call_and_cluster/staging/clusters/{cluster}.json",
+        cluster="call_and_cluster/staging/clusters/{cluster}.json",
     output:
-        profiles = "trees/{cluster}_profiles.tsv",
+        profiles="trees/{cluster}_profiles.tsv",
     params:
         host=config["mongodb_host"],
         port=config["mongodb_port"],
@@ -28,9 +28,9 @@ rule get_all_profiles_in_cluster:
 
 rule make_tree:
     input:
-        profile = "trees/{cluster}_profiles.tsv",
+        profile="trees/{cluster}_profiles.tsv",
     output:
-        tree = "trees/{cluster}.tre",
+        tree="trees/{cluster}.tre",
     conda:
         "../envs/grapetree.yaml"
     message:
@@ -46,15 +46,15 @@ rule make_tree:
 
 rule add_tree_to_cluster_sheet:
     input:
-        tree = "trees/{cluster}.tre",
-        cluster = "call_and_cluster/staging/clusters/{cluster}.json",
+        tree="trees/{cluster}.tre",
+        cluster="call_and_cluster/staging/clusters/{cluster}.json",
     output:
-        cluster = "staging/clusters/{cluster}.json",
+        cluster="staging/clusters/{cluster}.json",
     conda:
         "../envs/pandas.yaml"
     message:
         "[Trees] Finalizing cluster sheet for {wildcards.cluster}"
     log:
-        "logs/{cluster}_add_tree_to_cluster_sheet.log"
+        "logs/{cluster}_add_tree_to_cluster_sheet.log",
     script:
         "../scripts/add_tree_to_cluster_sheet.py"
