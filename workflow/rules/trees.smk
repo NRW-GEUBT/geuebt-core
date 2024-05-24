@@ -6,6 +6,9 @@
 # append tree to cluster sheet
 
 
+import os
+
+
 rule get_all_profiles_in_cluster:
     input:
         cluster="call_and_cluster/staging/clusters/{cluster}.json",
@@ -16,8 +19,8 @@ rule get_all_profiles_in_cluster:
         port=config["mongodb_port"],
         database=config["mongodb_database"],
         # Putting these paths in params is not elegant but saves a lot of wildcards headaches
-        isolates_dir="call_and_cluster/staging/isolates_sheets",
-        cluster_dir="call_and_cluster/staging/clusters",
+        isolates_dir=lambda w, input: os.path.join(os.path.dirname(input["cluster"]), "..", "isolates_sheets"),
+        cluster_dir=lambda w, input: os.path.dirname(input["cluster"]),
     conda:
         "../envs/mongodb.yaml"
     message:
