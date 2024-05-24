@@ -1,3 +1,7 @@
+### 0.2.8
+
+Fix a issue were cluster would not appear in the trees for orphan "clusters"
+
 ### 0.2.7
 
 Add trees in Newick format to the cluster sheets
