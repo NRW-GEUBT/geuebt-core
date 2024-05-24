@@ -96,7 +96,7 @@ def main(cluster_in, profiles_out, host, port, database, isolates_dir, cluster_d
     for entry in all_repr:
         id = entry["isolate_id"]
         entry["isolate_id"] = repr_mapping[id]
-    
+
     # format and dump as tsv
     merged_profiles = local_profiles + all_repr + profiles
     reformat = {}

@@ -19,7 +19,9 @@ rule get_all_profiles_in_cluster:
         port=config["mongodb_port"],
         database=config["mongodb_database"],
         # Putting these paths in params is not elegant but saves a lot of wildcards headaches
-        isolates_dir=lambda w, input: os.path.join(os.path.dirname(input["cluster"]), "..", "isolates_sheets"),
+        isolates_dir=lambda w, input: os.path.join(
+            os.path.dirname(input["cluster"]), "..", "isolates_sheets"
+        ),
         cluster_dir=lambda w, input: os.path.dirname(input["cluster"]),
     conda:
         "../envs/mongodb.yaml"
