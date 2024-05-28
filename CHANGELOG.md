@@ -1,3 +1,7 @@
+### 0.2.9
+
+Fix grapetree crash with null distance matrix
+
 ### 0.2.8
 
 Fix a issue were cluster would not appear in the trees for orphan "clusters"
