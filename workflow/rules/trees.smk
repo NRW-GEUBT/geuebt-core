@@ -47,7 +47,8 @@ rule make_tree:
     shell:
         """
         exec 2> {log}
-        grapetree -p {input.profile} -m MSTreeV2 > {output.tree}
+        # In case the distance matrix sum is 0, only no branch would be created and grapetree crashes
+        grapetree -p {input.profile} -m MSTreeV2 > {output.tree} || echo "{{}}" > {output.tree}
         """
 
 
