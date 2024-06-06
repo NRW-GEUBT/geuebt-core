@@ -30,7 +30,7 @@ def subw_path(param, ver=version):
     """
     returns path to subworklfow directory if param is 'default', returns param otherwise
     """
-    if param == "default":  
+    if param == "default":
         return f"{str(os.path.expanduser('~'))}/.nrw-geuebt/geuebt-core_{ver}"
     return param
 
