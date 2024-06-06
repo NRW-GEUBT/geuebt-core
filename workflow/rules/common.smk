@@ -26,6 +26,15 @@ def get_conda_prefix(wildcards):
         return workflow.deployment_settings.conda_prefix
 
 
+def subw_path(param, ver=version):
+    """
+    returns path to subworklfow directory if param is 'default', returns param otherwise
+    """
+    if param == "default":
+        return f"{str(os.path.expanduser('~'))}/.nrw-geuebt/geuebt-core_{ver}"
+    return param
+
+
 # Input functions ------------------------------------
 def aggregate_over_species(wildcards):
     "Aggregate chewie and charak rule outputs over the species wildcard and returns a dict of file lists"

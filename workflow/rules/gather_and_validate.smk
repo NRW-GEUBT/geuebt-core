@@ -69,7 +69,7 @@ rule validate_input:
         merged_isolate_sheet="validation/staging/isolates_datasheet.json",
     params:
         max_threads_per_job=config["max_threads_per_job"],
-        geva_path=f"{config['geuebt-validate_path']}/workflow/Snakefile",
+        geva_path=f"{subw_path(config['geuebt-validate_path'])}/workflow/Snakefile",
         conda_prefix=get_conda_prefix,
         # Absolute paths needed for workflow
         fastadir=f"{os.getcwd()}/inputs/fastas",

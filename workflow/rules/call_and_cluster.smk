@@ -25,7 +25,7 @@ rule chewie:
         clusters="call_and_cluster/{species}/staging/clusters.json",
     params:
         max_threads_per_job=config["max_threads_per_job"],
-        chewie_path=f"{config['geuebt-chewie_path']}/workflow/Snakefile",
+        chewie_path=f"{subw_path(config['geuebt-chewie_path'])}/workflow/Snakefile",
         conda_prefix=get_conda_prefix,
         # Using functions to get species specific parameters from config
         prodigal=lambda w: config[w.species]["prodigal"],

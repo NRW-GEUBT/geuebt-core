@@ -1,3 +1,8 @@
+### 0.2.10
+
+Modified the deloyement of subworkflows to allow or concurrent versions of core and/or the subworkflows to be used on the same system without clashes
+Update validate to 0.2.7
+
 ### 0.2.9
 
 Fix grapetree crash with null distance matrix

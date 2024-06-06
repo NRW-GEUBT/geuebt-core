@@ -11,9 +11,10 @@ watched_folders:
 
 max_threads_per_job: 1
 
-geuebt-validate_path: ~/.nrw-geuebt/geuebt-validate
-geuebt-chewie_path: ~/.nrw-geuebt/geuebt-chewie
-geuebt-charak_path: ~/.nrw-geuebt/geuebt-charak
+# Use 'default' for automatic deployment or give in a path
+geuebt-validate_path: default
+geuebt-chewie_path: default
+geuebt-charak_path: default
 
 # Should watched dirs be emptied?
 cleanup_watched_dirs: False
