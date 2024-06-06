@@ -2,7 +2,7 @@
 set -Eeu
 
 # Tags
-validate_ver="0.2.6"
+validate_ver="0.2.7"
 chewie_ver="0.3.2"
 charak_ver="0.2.0"
 
