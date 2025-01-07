@@ -2,6 +2,5 @@
 
 Core module of the Geübt application.
 
-## Usage
 
-The documentation for this workflow is hosted on our [homepage](https://nrw-geubt.github.io/geuebt-core/).
+deploy using a sensible conda prefix (e.g. ~/.nrw-geuebt)

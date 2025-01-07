@@ -1,2 +1,0 @@
-pandas == 1.5.3
-pymongo == 4.4.1

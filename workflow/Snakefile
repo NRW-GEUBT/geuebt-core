@@ -28,10 +28,7 @@ include: "rules/common.smk"
 
 rule all:
     input:
-        "dbops/push_clusters.flag",
-        "dbops/push_isolates.flag",
-        "dbops/push_fastas.flag",
-        "dbops/push_status.flag",
+        "staging/qc_status.json",
 
 
 # Includes --------------------------------------------------------------------
@@ -40,8 +37,7 @@ rule all:
 include: "rules/gather_and_validate.smk"
 include: "rules/call_and_cluster.smk"
 include: "rules/charak.smk"
-include: "rules/db_ops.smk"
-include: "rules/trees.smk"
+include: "rules/qc_status.smk"
 
 
 # Workflow --------------------------------------------------------------------
@@ -50,15 +46,6 @@ include: "rules/trees.smk"
 
 onstart:
     print(f"\nYou are using GEUEBT-CORE version: {version}")
-
-    # if test, the reset database
-    if os.path.samefile(os.getcwd(), f"{workflow.basedir}/../.tests/integration"):
-        print("Test configuration detected, resetting database")
-        os.chmod(f"{workflow.basedir}/../.tests/testdb/reset_testdb.sh", 0o755)
-        subprocess.call(
-            f"{workflow.basedir}/../.tests/testdb/reset_testdb.sh", shell=True
-        )
-
     with open(pipe_log, "a") as f:
         f.write(f"[{get_local_time()}]: Pipeline started\n")
 

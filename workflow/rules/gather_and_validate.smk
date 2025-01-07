@@ -69,21 +69,24 @@ rule validate_input:
         merged_isolate_sheet="validation/staging/isolates_datasheet.json",
     params:
         max_threads_per_job=config["max_threads_per_job"],
-        geva_path=f"{subw_path(config['geuebt-validate_path'])}/workflow/Snakefile",
+        geva_path=os.path.expanduser(f"~/.nrw-geuebt/geuebt-core-{version}/geuebt-validate/workflow/Snakefile"),
+        url=config["API_url"],
         conda_prefix=get_conda_prefix,
+        ephemeral=config["ephemeral"],
         # Absolute paths needed for workflow
         fastadir=f"{os.getcwd()}/inputs/fastas",
         metadata=f"{os.getcwd()}/inputs/metadata.tsv",
     message:
         "[Gather and validate] Validating user input"
     conda:
-        "../envs/git_workflow.yaml"
+        "../envs/validate.yaml"
     threads: workflow.cores
     log:
         "logs/validate_input.log",
     shell:
         """
         exec 2> {log}
+        echo {params.geva_path}
         snakemake -s {params.geva_path} \
             --use-conda \
             --conda-prefix {params.conda_prefix} \
@@ -91,6 +94,8 @@ rule validate_input:
             --config workdir={output.workdir} \
                      metadata={params.metadata} \
                      fasta_dir={params.fastadir} \
+                     API_url={params.url} \
+                     ephemeral={params.ephemeral}\
                      max_threads_per_job={params.max_threads_per_job} \
                      min_contig_length=500
         """
@@ -98,21 +103,16 @@ rule validate_input:
 
 checkpoint create_sample_sheets:
     input:
-        isolate_sheets="validation/staging/isolates_datasheet.json",
-        qc_in="validation/staging/validation_status.json",
+        isolate_sheets="validation/staging/isolates_datasheet.json",  
     output:
-        # files are named "Genus_species.tsv", points are striped
+        # files are named "Genus species.tsv"
         dirout=directory("sample_sheets"),
-        qc_out="validation/staging/validation_status_ids_checked.json",
     params:
         fasta_prefix="validation/staging/fastas",
-        host=config["mongodb_host"],
-        port=config["mongodb_port"],
-        database=config["mongodb_database"],
     conda:
-        "../envs/mongodb.yaml"
+        "../envs/pandas.yaml"
     message:
-        "[Gather and validate] Validating IDs and creating species-wise sample sheets"
+        "[Gather and validate] Creating species-wise sample sheets"
     log:
         "logs/create_sample_sheets.log",
     script:
