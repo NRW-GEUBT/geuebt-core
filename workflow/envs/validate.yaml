@@ -1,0 +1,10 @@
+name: git_workflow
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - pandas=1.5.3
+  - git=2.38.1
+  - snakemake=8.26
+
