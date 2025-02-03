@@ -20,7 +20,6 @@ rule chewie:
         clusters="call_and_cluster/{species}/staging/clusters.json",
     params:
         max_threads_per_job=config["max_threads_per_job"],
-        chewie_path=os.path.expanduser(f"~/.nrw-geuebt/geuebt-core-{version}/geuebt-chewie/workflow/Snakefile"),
         conda_prefix=get_conda_prefix,
         organism=lambda w: f"{w.species.replace('_', ' ').replace('spp', 'spp.')}",
         url=config["API_url"],
@@ -37,7 +36,7 @@ rule chewie:
     shell:
         """
         exec 2> {log}
-        snakemake -s {params.chewie_path} \
+        snakemake -s $CONDA_PREFIX/geuebt-chewie/workflow/Snakefile \
             --use-conda \
             --conda-prefix {params.conda_prefix} \
             --cores {threads} \

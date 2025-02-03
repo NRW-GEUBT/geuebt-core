@@ -14,7 +14,6 @@ rule charak:
         qc="charak/{species}/staging/qc_status.json",
     params:
         max_threads_per_job=config["max_threads_per_job"],
-        charak_path=os.path.expanduser(f"~/.nrw-geuebt/geuebt-core-{version}/geuebt-charak/workflow/Snakefile"),
         url=config["API_url"],
         ephemeral=config["ephemeral"],
         conda_prefix=get_conda_prefix,
@@ -30,7 +29,7 @@ rule charak:
     shell:
         """
         exec 2> {log}
-        snakemake -s {params.charak_path} \
+        snakemake -s $CONDA_PREFIX/geuebt-charak/workflow/Snakefile \
             --use-conda \
             --conda-prefix {params.conda_prefix} \
             --cores {threads} \

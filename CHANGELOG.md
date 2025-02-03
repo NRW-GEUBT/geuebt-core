@@ -1,3 +1,7 @@
+### 1.1.0
+
+Deploy all dependencies under CONDA_PREFIX
+
 ### 0.2.10
 
 Modified the deloyement of subworkflows to allow or concurrent versions of core and/or the subworkflows to be used on the same system without clashes

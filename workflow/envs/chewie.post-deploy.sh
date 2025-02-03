@@ -2,12 +2,10 @@
 set -Eeu
 
 # Tags
-repover="1.1.4"
-
-VERSION=$(cat "../../VERSION")
+repover="1.2.1"
 reponame="geuebt-chewie"
 
-dirpath="$HOME/.nrw-geuebt/geuebt-core-${VERSION}/${reponame}"
+dirpath="${CONDA_PREFIX}/${reponame}"
 dirroot=$(dirname $dirpath)
 
 CONDADIR=$(dirname ${CONDA_PREFIX})
@@ -28,6 +26,6 @@ rm "${repover}.tar.gz" &>> deploylog.txt
 
 echo "Deploying ${reponame}" >> deploylog.txt
 cd ${dirpath}
-snakemake --use-conda --conda-prefix ${CONDADIR} --cores 1 &>> ${dirroot}/deploylog.txt
+# snakemake --use-conda --conda-prefix ${CONDADIR} --cores 1 &>> ${dirroot}/deploylog.txt
 
 exit 0

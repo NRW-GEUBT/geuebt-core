@@ -4,7 +4,6 @@
 
 workdir: .tests/integration
 
-
 watched_folders: 
   - data/input_1
   - data/input_2
@@ -12,17 +11,12 @@ watched_folders:
 
 max_threads_per_job: 1
 
-geuebt-validate_path: /home/debian/.nrw-geuebt/geuebt-core_1.0.0/geuebt-validate/workflow/Snakefile
-geuebt-chewie_path: /home/debian/.nrw-geuebt/geuebt-core_1.0.0/geuebt-chewie/workflow/Snakefile
-geuebt-charak_path: /home/debian/.nrw-geuebt/geuebt-core_1.0.0/geuebt-charak/workflow/Snakefile
-
 # Should watched dirs be emptied?
 cleanup_watched_dirs: False
 ephemeral: False
 
-
 # Database
 # --------
 
-API_url: "http://127.0.0.1:8010/API_test"
+API_url: "http://127.0.0.1:8010"
 

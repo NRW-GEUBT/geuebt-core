@@ -19,7 +19,7 @@ from urllib.parse import urljoin
 import requests
 
 
-def main(vali_status, chewie_status, charak_status, status, ver, workdir_path,url):
+def main(vali_status, chewie_status, charak_status, status, ver, workdir_path, url):
     chewieqc, charakqc = {}, {}
     # merge over species
     for filepath in chewie_status:

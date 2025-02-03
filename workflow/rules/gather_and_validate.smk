@@ -69,7 +69,6 @@ rule validate_input:
         merged_isolate_sheet="validation/staging/isolates_datasheet.json",
     params:
         max_threads_per_job=config["max_threads_per_job"],
-        geva_path=os.path.expanduser(f"~/.nrw-geuebt/geuebt-core-{version}/geuebt-validate/workflow/Snakefile"),
         url=config["API_url"],
         conda_prefix=get_conda_prefix,
         ephemeral=config["ephemeral"],
@@ -86,8 +85,7 @@ rule validate_input:
     shell:
         """
         exec 2> {log}
-        echo {params.geva_path}
-        snakemake -s {params.geva_path} \
+        snakemake -s $CONDA_PREFIX/geuebt-validate/workflow/Snakefile \
             --use-conda \
             --conda-prefix {params.conda_prefix} \
             --cores {threads} \

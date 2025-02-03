@@ -10,16 +10,11 @@ watched_folders:
 
 max_threads_per_job: 1
 
-geuebt-validate_path: default
-geuebt-chewie_path: default
-geuebt-charak_path: default
-
 # Should watched dirs be emptied?
 cleanup_watched_dirs: False
 ephemeral: False
 
-
 # Database
 # --------
 
-API_url: "http://127.0.0.1:8000/API_test"
+API_url: "http://127.0.0.1:8000"
