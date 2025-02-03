@@ -1,3 +1,7 @@
+### 1.1.1
+
+Adding missing test data
+
 ### 1.1.0
 
 Deploy all dependencies under CONDA_PREFIX
