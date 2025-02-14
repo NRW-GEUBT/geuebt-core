@@ -1,3 +1,8 @@
+### 1.2.0
+
+Fix date parsing (validate)
+Add workflow version to isolate_sheet (all)
+
 ### 1.1.1
 
 Adding missing test data
