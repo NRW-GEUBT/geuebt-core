@@ -39,7 +39,7 @@ def main(vali_status, chewie_status, charak_status, status, ver, workdir_path, u
         )
         charak_value = charakqc.get(
             k,
-            {"STATUS": "WARN", "MESSAGES": ["No geuebt-chewie data for this sample"]}
+            {"STATUS": "WARNING", "MESSAGES": ["No geuebt-chewie data for this sample"]}
         )
         
         # merge status
@@ -50,8 +50,8 @@ def main(vali_status, chewie_status, charak_status, status, ver, workdir_path, u
         ]
         if "FAIL" in qc_status:
             valiqc[k]["STATUS"] = "FAIL"
-        elif "WARN"in status:
-            valiqc[k]["STATUS"] = "WARN"
+        elif "WARNING"in status:
+            valiqc[k]["STATUS"] = "WARNING"
         else:
             pass
         
