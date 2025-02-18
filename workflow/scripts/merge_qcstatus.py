@@ -81,7 +81,9 @@ def main(vali_status, chewie_status, charak_status, status, ver, workdir_path, u
 
     # post run data
     response = requests.post(urljoin(url, "runs"), json=qcstatus)
-    #Should check repsonse
+    if response.status_code != 200:
+        print(json.dumps(response.json(), indent=4), file=sys.stderr)
+        raise ValueError("Failed to POST run status. Check the logs for more details.")
 
 
 if __name__ == '__main__':
