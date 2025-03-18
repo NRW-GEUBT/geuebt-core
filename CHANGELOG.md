@@ -1,3 +1,7 @@
+### 1.2.3
+
+Correctly cleanup metadata from input dirs
+
 ### 1.2.0
 
 Fix date parsing (validate)

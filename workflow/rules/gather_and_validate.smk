@@ -24,6 +24,8 @@ rule merge_metadata:
         manifest="tracking/manifest.json",
     output:
         metadata="inputs/metadata.tsv",
+    params:
+        cleanup=config["cleanup_watched_dirs"],
     message:
         "[Gather and validate] Gathering metadata"
     conda:
