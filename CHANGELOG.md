@@ -1,3 +1,7 @@
+### 1.2.4
+
+Bump chewie to 1.3.1
+
 ### 1.2.3
 
 Correctly cleanup metadata from input dirs
