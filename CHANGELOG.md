@@ -1,3 +1,7 @@
+### 1.2.5
+
+Bump chewie to 1.3.2
+
 ### 1.2.4
 
 Bump chewie to 1.3.1
