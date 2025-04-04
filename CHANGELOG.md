@@ -1,3 +1,7 @@
+### 1.2.7
+
+Bump validate to 1.3.2
+
 ### 1.2.6
 
 Bump validate to 1.3.1
