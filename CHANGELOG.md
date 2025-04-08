@@ -1,3 +1,7 @@
+### 1.2.8
+
+Bump chewie to 1.3.3
+
 ### 1.2.7
 
 Bump validate to 1.3.2
