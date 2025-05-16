@@ -19,6 +19,26 @@ from urllib.parse import urljoin
 import requests
 
 
+USERNAME = os.getenv("GEUEBT_API_USERNAME")
+PASSWORD = os.getenv("GEUEBT_API_PASSWORD")
+
+
+def login(url, username, password):
+    response = requests.post(
+        f"{url}/users/token",
+        data={"username": username, "password": password},
+        headers={"Content-Type": "application/x-www-form-urlencoded"}
+    )
+    response.raise_for_status()
+    return response.json()["access_token"]
+
+
+def authenticated_request( method, endpoint, token, **kwargs):
+    headers = kwargs.pop("headers", {})
+    headers["Authorization"] = f"Bearer {token}"
+    return requests.request(method, endpoint, headers=headers, **kwargs)
+
+
 def main(vali_status, chewie_status, charak_status, status, ver, workdir_path, url):
     chewieqc, charakqc = {}, {}
     # merge over species
@@ -80,7 +100,10 @@ def main(vali_status, chewie_status, charak_status, status, ver, workdir_path, u
         json.dump(qcstatus, fo, indent=4)
 
     # post run data
-    response = requests.post(urljoin(url, "runs"), json=qcstatus)
+    if not USERNAME or not PASSWORD:
+        raise RuntimeError("Missing API_USERNAME or API_PASSWORD env vars")
+    token = login(USERNAME, PASSWORD)
+    response = authenticated_request("POST", urljoin(url, "runs"), token , json=qcstatus)
     if response.status_code != 200:
         print(json.dumps(response.json(), indent=4), file=sys.stderr)
         raise ValueError("Failed to POST run status. Check the logs for more details.")

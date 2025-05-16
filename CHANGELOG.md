@@ -1,3 +1,7 @@
+### 1.2.9
+
+Add API Authentication method
+
 ### 1.2.8
 
 Bump chewie to 1.3.3
