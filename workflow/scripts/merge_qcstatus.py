@@ -102,7 +102,7 @@ def main(vali_status, chewie_status, charak_status, status, ver, workdir_path, u
     # post run data
     if not USERNAME or not PASSWORD:
         raise RuntimeError("Missing API_USERNAME or API_PASSWORD env vars")
-    token = login(USERNAME, PASSWORD)
+    token = login(url, USERNAME, PASSWORD)
     response = authenticated_request("POST", urljoin(url, "runs"), token , json=qcstatus)
     if response.status_code != 200:
         print(json.dumps(response.json(), indent=4), file=sys.stderr)

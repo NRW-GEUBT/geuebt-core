@@ -1,3 +1,11 @@
+### 1.3.0
+
+Support for automated cluster merging
+
+### 1.2.10
+
+Fix authentication
+
 ### 1.2.9
 
 Add API Authentication method
