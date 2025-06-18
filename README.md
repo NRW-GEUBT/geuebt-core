@@ -10,7 +10,7 @@ Needs an API connection! Use following env variables for login:
 - GEUEBT_API_PASSWORD
 
 ```
-export GEUEBT_API_USERNAME=your_username
-export GEUEBT_API_PASSWORD=your_password
+export GEUEBT_API_USERNAME=workflow
+export GEUEBT_API_PASSWORD=workflow
 ```
 

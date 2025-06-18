@@ -2,7 +2,7 @@
 set -Eeu
 
 # Tags
-repover="1.3.4"
+repover="1.4.0"
 reponame="geuebt-validate"
 
 dirpath="${CONDA_PREFIX}/geuebt-validate"

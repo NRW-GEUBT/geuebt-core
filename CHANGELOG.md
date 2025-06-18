@@ -1,3 +1,7 @@
+### 1.4.0
+
+Add fastq md5 to metadata model
+
 ### 1.3.0
 
 Support for automated cluster merging
