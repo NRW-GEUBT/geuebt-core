@@ -1,3 +1,7 @@
+### 1.4.1
+
+Support ANSI encoding for metadata table
+
 ### 1.4.0
 
 Add fastq md5 to metadata model
