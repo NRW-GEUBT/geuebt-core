@@ -1,3 +1,7 @@
+### 1.4.2
+
+Fix cluster sheet in chewie 1.4.3
+
 ### 1.4.1
 
 Support ANSI encoding for metadata table
