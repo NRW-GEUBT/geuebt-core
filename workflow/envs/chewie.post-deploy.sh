@@ -2,7 +2,7 @@
 set -Eeu
 
 # Tags
-repover="1.4.3"
+repover="1.4.4"
 reponame="geuebt-chewie"
 
 dirpath="${CONDA_PREFIX}/${reponame}"
