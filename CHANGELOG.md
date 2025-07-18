@@ -1,3 +1,7 @@
+### 1.4.8
+
+Don't push clusters with no new samples
+
 ### 1.4.7
 
 Fix cluster sheet in chewie 1.4.5
