@@ -1,3 +1,7 @@
+### 1.4.9
+
+Chewie no longer crashes when no samples pass QC
+
 ### 1.4.8
 
 Don't push clusters with no new samples
