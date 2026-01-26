@@ -92,8 +92,8 @@ rule validate_input:
             --conda-prefix {params.conda_prefix} \
             --cores {threads} \
             --config workdir={output.workdir} \
-                     metadata={params.metadata} \
-                     fasta_dir={params.fastadir} \
+                     metadata='{params.metadata}' \
+                     fasta_dir='{params.fastadir}' \
                      API_url={params.url} \
                      ephemeral={params.ephemeral}\
                      max_threads_per_job={params.max_threads_per_job} \

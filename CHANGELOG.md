@@ -1,3 +1,7 @@
+### 1.5.0
+
+Bump validate to 1.50 with new kraken2 and busco databases
+
 ### 1.4.9
 
 Chewie no longer crashes when no samples pass QC
