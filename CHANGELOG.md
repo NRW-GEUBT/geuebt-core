@@ -1,3 +1,7 @@
+### 1.5.2
+
+fix cluster nmerging logic with call and cluster v1.4.10
+
 ### 1.5.1 
 
 fix busco DB
