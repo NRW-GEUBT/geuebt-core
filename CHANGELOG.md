@@ -1,3 +1,7 @@
+### 1.5.3
+
+Bug fix BUSCO url and tree merging
+
 ### 1.5.2
 
 fix cluster nmerging logic with call and cluster v1.4.10
