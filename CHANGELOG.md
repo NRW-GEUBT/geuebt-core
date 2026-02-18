@@ -1,3 +1,7 @@
+### 1.5.4
+
+Bugfix
+
 ### 1.5.3
 
 Bug fix BUSCO url and tree merging
