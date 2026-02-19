@@ -1,3 +1,7 @@
+### 1.5.5
+
+Bugfix validate
+
 ### 1.5.4
 
 Bugfix
