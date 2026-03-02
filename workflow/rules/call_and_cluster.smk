@@ -40,6 +40,7 @@ rule chewie:
             --use-conda \
             --conda-prefix {params.conda_prefix} \
             --cores {threads} \
+            --latency-wait 300 \
             --config workdir={output.workdir} \
                      sample_sheet={params.sample_sheet} \
                      API_url={params.url}\

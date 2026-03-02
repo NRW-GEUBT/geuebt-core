@@ -33,6 +33,7 @@ rule charak:
             --use-conda \
             --conda-prefix {params.conda_prefix} \
             --cores {threads} \
+            --latency-wait 300 \
             --config workdir={output.workdir} \
                      sample_sheet={params.sample_sheet} \
                      max_threads_per_job={params.max_threads_per_job} \

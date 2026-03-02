@@ -1,3 +1,11 @@
+### 1.5.7
+
+Deprecate oprhan clusters
+
+### 1.5.6
+
+Increase latency wait to 300s
+
 ### 1.5.5
 
 Bugfix validate

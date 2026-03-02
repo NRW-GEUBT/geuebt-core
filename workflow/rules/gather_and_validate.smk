@@ -91,6 +91,7 @@ rule validate_input:
             --use-conda \
             --conda-prefix {params.conda_prefix} \
             --cores {threads} \
+            --latency-wait 300 \
             --config workdir={output.workdir} \
                      metadata='{params.metadata}' \
                      fasta_dir='{params.fastadir}' \
